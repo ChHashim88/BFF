@@ -1,13 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
-import { Check, ArrowRight, Clapperboard, Award } from "lucide-react";
+import { Check, ArrowRight, Clapperboard, Award, Globe, PieChart, TrendingUp, Handshake } from "lucide-react";
+import TextLoop from "@/components/ui/TextLoop";
+import { ApiRateLimitingCard } from "@/components/ui/api-rate-limiting-card";
+import { SparklesCore } from "@/components/ui/sparkles";
 import { Navbar } from "@/components/Navbar";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { DestinationCard } from "@/components/ui/card-21";
 import AccordionGallery from "@/components/ui/AccordionGallery";
 import OpportunitySection from "@/components/ui/opportunity-section";
 import FUIBentoGridDark from "@/components/ui/bento-grid";
+import VerticalTabs from "@/components/ui/vertical-tabs";
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
+import RadialOrbitalTimelineDark from "@/components/ui/radial-orbital-timeline-dark";
 import { Search, FileText, Blocks, CircleDollarSign, Rocket, Users } from "lucide-react";
 import * as React from "react";
 
@@ -50,7 +55,7 @@ const ExpandableText = ({ shortText, fullText }: { shortText: string, fullText: 
   );
 };
 
-const timelineData = [
+const opportunityTimelineData = [
   {
     id: 1,
     title: "Source",
@@ -116,6 +121,64 @@ const timelineData = [
     relatedIds: [5],
     status: "pending" as const,
     energy: 10,
+  },
+];
+
+const executionTimelineData = [
+  {
+    id: 1,
+    title: "Project Access",
+    date: "Sourcing",
+    content: "A growing pipeline sourced through filmmakers, producers, representatives, and development relationships—not dependent on a single source of projects.",
+    category: "Access",
+    icon: Search,
+    relatedIds: [2],
+    status: "completed" as const,
+    energy: 100,
+  },
+  {
+    id: 2,
+    title: "Disciplined Greenlight",
+    date: "Evaluation",
+    content: "A rigorous, proprietary evaluation methodology that tests each project’s creative strength, audience thesis, commercial potential, capitalization, execution risk, and path to market.",
+    category: "Greenlight",
+    icon: FileText,
+    relatedIds: [1, 3],
+    status: "completed" as const,
+    energy: 85,
+  },
+  {
+    id: 3,
+    title: "Production Execution",
+    date: "Production",
+    content: "Experienced producers, defined budgets, clear agreements, accountable milestones, and professional oversight from greenlight through delivery.",
+    category: "Execution",
+    icon: Blocks,
+    relatedIds: [2, 4],
+    status: "in-progress" as const,
+    energy: 60,
+  },
+  {
+    id: 4,
+    title: "Distribution",
+    date: "Market",
+    content: "Global distribution experience and commercial relationships that inform which projects move forward—and how they are positioned to reach audiences.",
+    category: "Distribution",
+    icon: Rocket,
+    relatedIds: [3, 5],
+    status: "pending" as const,
+    energy: 40,
+  },
+  {
+    id: 5,
+    title: "Platform Oversight",
+    date: "Management",
+    content: "Standalone project structures, disciplined capital management, consistent reporting, and a platform designed to give investors ongoing visibility.",
+    category: "Platform",
+    icon: Users,
+    relatedIds: [4],
+    status: "pending" as const,
+    energy: 25,
   },
 ];
 
@@ -351,7 +414,7 @@ function Index() {
           <div className="mx-auto w-full max-w-[1350px] grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mt-12 lg:mt-16">
             <div className="w-full h-[550px]">
               <DestinationCard
-                imageUrl="/images/31c498dbbf2c4fec7273a3e6a711e6ab.jpg"
+                imageUrl="/images/1.jpeg"
                 location="Each Film. One Clean Economic Picture."
                 href="#"
                 themeColor="0 84% 30%"
@@ -393,7 +456,7 @@ function Index() {
             </div>
             <div className="w-full h-[550px]">
               <DestinationCard
-                imageUrl="/images/1133d95d2963819575c96157e798a15b.jpg"
+                imageUrl="/images/2.jpeg"
                 location="No Back of the Line."
                 flag=""
                 stats=""
@@ -440,7 +503,7 @@ function Index() {
             </div>
             <div className="w-full h-[550px]">
               <DestinationCard
-                imageUrl="/images/79ed465a0b4a8162754b309acb14585d.jpg"
+                imageUrl="/images/3.jpeg"
                 location="Commercial Discipline,    Built In"
                 flag=""
                 stats=""
@@ -563,33 +626,32 @@ function Index() {
         {/* Bento Grid Section */}
         <FUIBentoGridDark />
 
+        {/* Vertical Tabs Section */}
+        <VerticalTabs />
+
         {/* Gallery Section */}
-        <section className="relative w-full bg-background px-6 py-16 lg:py-24 lg:px-12 xl:px-24 flex lg:hidden flex-col justify-center items-center">
+        <section className="relative w-full bg-background px-6 pt-0 pb-16 lg:pt-0 lg:pb-24 lg:px-12 xl:px-24 flex flex-col justify-center items-center">
           <div className="mx-auto w-full max-w-[1350px]">
             <AccordionGallery
               items={[
                 {
                   image: '/Images 2/Discover Curated Films.jpg',
                   label: 'Discover Curated Films',
-                  link: '#',
-                  description: <><span className="font-bold"></span><br />Find projects that have passed BFF’s review process.</>
+                  description: 'Find projects that have passed BFF’s review process.'
                 },
                 {
                   image: '/Images 2/Explore and Invest.jpg',
                   label: 'Explore & Invest',
-                  link: '#',
                   description: 'Understand the opportunity and choose what you believe in.'
                 },
                 {
                   image: '/Images 2/Follow The Journey.jpg',
                   label: 'Follow the Journey',
-                  link: '#',
                   description: 'Track progress from financing through release.'
                 },
                 {
                   image: '/Images 2/Build Your Portfolio.jpg',
                   label: 'Build Your Portfolio',
-                  link: '#',
                   description: 'Manage multiple standalone film investments in one place.'
                 }
               ]}
@@ -637,17 +699,167 @@ function Index() {
 
             {/* Right side orbital - Fixed Height */}
             <div className="relative w-full h-[500px] flex items-center justify-center order-1 lg:order-2">
-              <RadialOrbitalTimeline timelineData={timelineData} />
+              <RadialOrbitalTimeline timelineData={opportunityTimelineData} />
             </div>
 
           </div>
         </section>
 
-        {/* Placeholder Section */}
-        <section className="relative w-full min-h-[50vh] bg-background py-24 flex items-center justify-center border-t border-border/20">
-          <div className="text-center text-muted-foreground opacity-50">
-            <h2 className="text-2xl font-bold mb-2">New Section Area</h2>
-            <p className="text-sm">Blank placeholder ready for new content</p>
+        {/* How We Make Money Section */}
+        <section
+          id="revenue"
+          className="relative w-full scroll-mt-24 bg-background px-6 py-16 lg:py-24 lg:px-12 xl:px-24 flex flex-col justify-center"
+        >
+          <div className="mx-auto w-full max-w-[1350px] flex flex-col space-y-10 lg:space-y-16">
+            <div className="w-full text-center lg:text-left">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                {/* Left Side - Content */}
+                <div className="flex flex-col gap-4 sm:gap-6 lg:pr-8 xl:pr-16 order-2 lg:order-1 mt-8 lg:mt-0 text-left">
+                  <h3 className="text-h3 text-destructive mb-2 font-bold tracking-tight uppercase">How We Make Money</h3>
+                  <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-700 cursor-default">
+                    Multiple Revenue Streams.
+                  </h2>
+                  <p className="text-body-text text-muted-foreground mt-4">
+                    Big Film Fund is building a platform business, with multiple complementary revenue streams not dependent on the success of any one movie.
+                  </p>
+                </div>
+
+                {/* Right Side - Stacked Video Player */}
+                <div className="relative w-full aspect-[4/3] sm:aspect-video lg:aspect-[4/3] xl:aspect-[16/10] lg:ml-4 sm:ml-8 order-1 lg:order-2">
+                  {/* Back layers for stack effect */}
+                  <div className="absolute inset-y-6 -left-6 w-full bg-zinc-200 dark:bg-zinc-900 border border-border/40 shadow-2xl z-0 hidden sm:block" />
+                  <div className="absolute inset-y-3 -left-3 w-full bg-zinc-300 dark:bg-zinc-900 border border-border/50 shadow-2xl z-10 hidden sm:block" />
+
+                  {/* Main Video frame */}
+                  <div className="absolute inset-0 w-full h-full bg-zinc-100 dark:bg-zinc-950 border border-border shadow-2xl overflow-hidden z-20 flex items-center justify-center group transition-transform duration-500 hover:-translate-y-2 hover:translate-x-2">
+                    <div className="absolute inset-0 bg-black/10 dark:bg-black/40 group-hover:bg-black/5 dark:group-hover:bg-black/10 transition-colors duration-500 z-10" />
+                    <span className="text-2xl sm:text-4xl font-black tracking-[0.2em] text-foreground/40 dark:text-white/30 uppercase z-20 transition-transform duration-500 group-hover:scale-105">
+                      Video Player
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Center Line Below */}
+              <div className="mt-16 lg:mt-24 w-full flex justify-center text-center">
+                <p className="text-lg md:text-xl font-medium text-foreground max-w-3xl leading-relaxed">
+                  Rather than depending on one movie or one source of income, BFF’s business model combines four complementary revenue streams:
+                </p>
+              </div>
+
+              {/* Four Cards Row */}
+              <div className="mt-12 w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 text-left">
+                <ApiRateLimitingCard
+                  icon={<Globe className="size-6 text-foreground" />}
+                  cardTitle="Platform Fees"
+                  cardDescription="Fees associated with bringing film offerings to market and supporting them through the BFF platform."
+                  animationId="pulseWave"
+                />
+                <ApiRateLimitingCard
+                  icon={<PieChart className="size-6 text-foreground" />}
+                  cardTitle="Project Participation"
+                  cardDescription="Revenue and defined economic participation associated with BFF’s role in financing, developing, and producing individual films."
+                  animationId="pulseWave"
+                />
+                <ApiRateLimitingCard
+                  icon={<TrendingUp className="size-6 text-foreground" />}
+                  cardTitle="Performance-Based Upside"
+                  cardDescription="BFF participates in distributable revenue from successful films—aligning the company’s financial upside with the performance of the projects it helps bring to market."
+                  animationId="pulseWave"
+                />
+                <ApiRateLimitingCard
+                  icon={<Handshake className="size-6 text-foreground" />}
+                  cardTitle="Distribution and Partnerships"
+                  cardDescription="Revenue associated with distribution, licensing, content partnerships, and other commercial relationships developed around BFF films."
+                  animationId="pulseWave"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* New 4 Cards Section */}
+        <section className="relative w-full bg-background pb-16 pt-0 flex items-center justify-center">
+          <div className="mx-auto w-full max-w-[1350px] px-6 lg:px-12 xl:px-24">
+
+
+            <div className="mt-0 text-center max-w-4xl mx-auto space-y-6 text-lg md:text-xl text-foreground font-medium px-4">
+              <p>
+                Some of these revenue streams are generated through platform and project activity. Others depend on the commercial performance of the films themselves.
+              </p>
+              <p>
+                Together, they give BFF the potential to earn revenue at multiple points in the film lifecycle, and across a growing pipeline of standalone projects.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Built to Execute Section */}
+        <section id="execute" className="relative w-full scroll-mt-24 px-6 lg:px-12 xl:px-24 py-16 lg:py-24 overflow-hidden flex flex-col justify-center bg-background">
+
+          <div className="mx-auto w-full max-w-[1350px] mt-12 flex flex-col space-y-10 lg:space-y-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Left Side - Text */}
+              <div className="flex flex-col gap-6 order-2 lg:order-1 mt-8 lg:mt-0 lg:pr-8 xl:pr-16">
+                <h3 className="text-xl md:text-2xl font-black text-[#CD0007] uppercase tracking-wider drop-shadow-sm">
+                  Built to Execute
+                </h3>
+                <h2 className="text-h2 text-foreground drop-shadow-sm mt-2">
+                  The Capabilities Behind the Model
+                </h2>
+                <div className="space-y-4 text-body-text text-muted-foreground transition-colors duration-300">
+                  <p>A better film investment model only matters if it can be executed in the real world.</p>
+                  <p>Building a successful film investment platform requires more than technology. It requires access to investable projects, experienced commercial judgment, disciplined financial governance, professional production oversight, and the ability to bring films to audiences.</p>
+                  <p>Big Film Fund brings those capabilities together across the full film lifecycle.</p>
+                </div>
+              </div>
+
+              {/* Right Side - Stacked Video Player */}
+              <div className="relative w-full aspect-[4/3] sm:aspect-video lg:aspect-[4/3] xl:aspect-[16/10] lg:ml-4 sm:ml-8 order-1 lg:order-2">
+                {/* Back layers for stack effect */}
+                <div className="absolute inset-y-6 -left-6 w-full bg-zinc-200 dark:bg-zinc-900 border border-border/40 shadow-2xl z-0 hidden sm:block" />
+                <div className="absolute inset-y-3 -left-3 w-full bg-zinc-300 dark:bg-zinc-900 border border-border/50 shadow-2xl z-10 hidden sm:block" />
+
+                {/* Main Video frame */}
+                <div className="absolute inset-0 w-full h-full bg-zinc-100 dark:bg-zinc-950 border border-border shadow-2xl overflow-hidden z-20 flex items-center justify-center group transition-transform duration-500 hover:-translate-y-2 hover:translate-x-2">
+                  <div className="absolute inset-0 bg-black/10 dark:bg-black/40 group-hover:bg-black/5 dark:group-hover:bg-black/10 transition-colors duration-500 z-10" />
+                  <span className="text-2xl sm:text-4xl font-black tracking-[0.2em] text-foreground/40 dark:text-white/30 uppercase z-20 transition-transform duration-500 group-hover:scale-105">
+                    Video Player
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Sparkles & Orbital Container */}
+            <div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md mt-0 relative">
+              {/* Sparkles Animation */}
+              <div className="w-full max-w-[40rem] h-40 relative z-0">
+                {/* Gradients */}
+                <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-white to-transparent h-[2px] w-3/4 blur-sm" />
+                <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-white to-transparent h-px w-3/4" />
+                <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-white/50 to-transparent h-[5px] w-1/4 blur-sm" />
+                <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-white/50 to-transparent h-px w-1/4" />
+
+                {/* Core component */}
+                <SparklesCore
+                  background="transparent"
+                  minSize={0.4}
+                  maxSize={1}
+                  particleDensity={1200}
+                  className="w-full h-full"
+                  particleColor="#CD0007"
+                />
+
+                {/* Radial Gradient to prevent sharp edges - blends into the background */}
+                <div className="absolute inset-0 w-full h-full bg-background [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+              </div>
+
+              {/* Radial Orbital Timeline */}
+              <div className="relative w-full h-[500px] flex items-center justify-center -mt-16 z-10 scale-105 sm:scale-110 lg:scale-[1.15]">
+                <RadialOrbitalTimeline timelineData={executionTimelineData} colorTheme="solidRed" />
+              </div>
+            </div>
           </div>
         </section>
       </main>

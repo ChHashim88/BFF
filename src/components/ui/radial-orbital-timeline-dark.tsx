@@ -19,12 +19,10 @@ interface TimelineItem {
 
 interface RadialOrbitalTimelineProps {
   timelineData: TimelineItem[];
-  colorTheme?: "primary" | "monochrome" | "solidRed";
 }
 
-export default function RadialOrbitalTimeline({
+export default function RadialOrbitalTimelineDark({
   timelineData,
-  colorTheme = "primary",
 }: RadialOrbitalTimelineProps) {
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>(
     {}
@@ -144,65 +142,41 @@ export default function RadialOrbitalTimeline({
   const getStatusStyles = (status: TimelineItem["status"]): string => {
     switch (status) {
       case "completed":
-        return "text-background bg-foreground border-foreground";
+        return "text-white bg-black border-white";
       case "in-progress":
-        return "text-foreground bg-background border-border";
+        return "text-black bg-white border-black";
       case "pending":
-        return "text-foreground/70 bg-background/40 border-border";
+        return "text-white bg-black/40 border-white/50";
       default:
-        return "text-foreground/70 bg-background/40 border-border";
+        return "text-white bg-black/40 border-white/50";
     }
-  };
-
-  const isSolid = colorTheme === "solidRed";
-
-  const c = {
-    bg: colorTheme === "monochrome" ? "bg-foreground" : "bg-[#CD0007]",
-    bg10: colorTheme === "monochrome" ? "bg-foreground/10" : isSolid ? "bg-[#CD0007]/20" : "bg-[#CD0007]/10",
-    bg20: colorTheme === "monochrome" ? "bg-foreground/20" : isSolid ? "bg-[#CD0007]/30" : "bg-[#CD0007]/20",
-    bg50: colorTheme === "monochrome" ? "bg-foreground/50" : isSolid ? "bg-[#CD0007]/80" : "bg-[#CD0007]/50",
-    hoverBg5: colorTheme === "monochrome" ? "hover:bg-foreground/5" : "hover:bg-[#CD0007]/10",
-    hoverBg10: colorTheme === "monochrome" ? "hover:bg-foreground/10" : "hover:bg-[#CD0007]/20",
-    text: colorTheme === "monochrome" ? "text-foreground" : "text-[#CD0007]",
-    textInv: colorTheme === "monochrome" ? "text-background" : "text-white",
-    hoverText: colorTheme === "monochrome" ? "hover:text-foreground" : "hover:text-[#CD0007]",
-    border: colorTheme === "monochrome" ? "border-foreground" : "border-[#CD0007]",
-    border20: colorTheme === "monochrome" ? "border-foreground/20" : isSolid ? "border-[#CD0007]/40" : "border-[#CD0007]/20",
-    border30: colorTheme === "monochrome" ? "border-foreground/30" : isSolid ? "border-[#CD0007]/60" : "border-[#CD0007]/30",
-    border50: colorTheme === "monochrome" ? "border-foreground/50" : isSolid ? "border-[#CD0007]/80" : "border-[#CD0007]/50",
-    border60: colorTheme === "monochrome" ? "border-foreground/60" : isSolid ? "border-[#CD0007]" : "border-[#CD0007]/60",
-    hoverBorder60: colorTheme === "monochrome" ? "hover:border-foreground/60" : "hover:border-[#CD0007]",
-    shadow: colorTheme === "monochrome" ? "shadow-[0_0_30px_rgba(0,0,0,0.5)] dark:shadow-[0_0_30px_rgba(255,255,255,0.5)]" : isSolid ? "shadow-[0_0_30px_rgba(205,0,7,0.7)]" : "shadow-[0_0_30px_rgba(205,0,7,0.5)]",
-    shadow20: colorTheme === "monochrome" ? "shadow-foreground/20" : isSolid ? "shadow-[#CD0007]/40" : "shadow-[#CD0007]/20",
-    shadow40: colorTheme === "monochrome" ? "shadow-foreground/40" : isSolid ? "shadow-[#CD0007]/60" : "shadow-[#CD0007]/40",
   };
 
   return (
     <div
-      className="w-full h-full min-h-[350px] md:min-h-[400px] flex flex-col items-center justify-center overflow-hidden sm:overflow-visible"
+      className="w-full h-full min-h-[400px] flex flex-col items-center justify-center overflow-visible"
       ref={containerRef}
       onClick={handleContainerClick}
     >
       <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
         <div
-          className="absolute w-full h-full flex items-center justify-center scale-[0.45] xs:scale-[0.55] sm:scale-75 md:scale-90 lg:scale-100 transition-transform duration-300 origin-center"
+          className="absolute w-full h-full flex items-center justify-center scale-[0.7] sm:scale-80 md:scale-95 lg:scale-105 transition-transform duration-300 origin-center"
           ref={orbitRef}
           style={{
             perspective: "1000px",
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute flex items-center justify-center z-10">
-            <div className={`absolute w-16 h-16 rounded-full ${c.bg} animate-pulse ${c.shadow}`}></div>
-            <div className={`absolute w-20 h-20 rounded-full border ${isSolid ? 'border-2' : ''} ${c.border50} animate-ping opacity-70`}></div>
+          <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-blue-500 to-teal-500 animate-pulse flex items-center justify-center z-10 shadow-[0_0_40px_rgba(255,255,255,0.8)]">
+            <div className="absolute w-24 h-24 rounded-full border-2 border-white animate-ping shadow-[0_0_20px_rgba(255,255,255,0.8)]"></div>
             <div
-              className={`absolute w-24 h-24 rounded-full border ${isSolid ? 'border-2' : ''} ${c.border30} animate-ping opacity-50`}
+              className="absolute w-32 h-32 rounded-full border border-white animate-ping shadow-[0_0_15px_rgba(255,255,255,0.5)]"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <span className={`relative z-20 ${c.textInv} font-bold text-sm tracking-widest`}>BFF</span>
+            <div className="w-10 h-10 rounded-full bg-white backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,1)]"></div>
           </div>
 
-          <div className={`absolute w-96 h-96 rounded-full border ${isSolid ? 'border-2' : ''} ${c.border20}`}></div>
+          <div className="absolute w-96 h-96 rounded-full border-2 border-white/30 shadow-[0_0_30px_rgba(255,255,255,0.1)]"></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
@@ -243,48 +217,43 @@ export default function RadialOrbitalTimeline({
 
                 <div
                   className={`
-                  w-14 h-14 rounded-full flex items-center justify-center
+                  w-12 h-12 rounded-full flex items-center justify-center
                   ${
                     isExpanded
-                      ? `${c.bg} ${c.textInv}`
+                      ? "bg-white text-black shadow-[0_0_25px_rgba(255,255,255,1)]"
                       : isRelated
-                      ? `${c.bg20} ${c.text}`
-                      : `bg-background ${c.text}`
+                      ? "bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+                      : "bg-black text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
                   }
                   border-2 
                   ${
                     isExpanded
-                      ? `${c.border} shadow-lg ${c.shadow40}`
+                      ? "border-white"
                       : isRelated
-                      ? `${c.border60} animate-pulse`
-                      : `${c.border30}`
+                      ? "border-white animate-pulse"
+                      : "border-white"
                   }
-                  transition-all duration-300 transform
-                  ${isExpanded ? "scale-125" : `hover:scale-110 ${c.hoverBorder60} ${c.hoverBg10}`}
+                  transition-all duration-300 transform hover:scale-125 hover:shadow-[0_0_20px_rgba(255,255,255,1)]
+                  ${isExpanded ? "scale-150" : ""}
                 `}
                 >
-                  <Icon
-                    size={24}
-                    className={`transition-all duration-300 ${
-                      isExpanded ? "opacity-100" : "opacity-80"
-                    }`}
-                  />
+                  <Icon size={20} className={isExpanded || isRelated ? "text-black" : "text-white drop-shadow-[0_0_5px_rgba(255,255,255,1)]"} />
                 </div>
 
                 <div
                   className={`
-                  absolute top-16 left-1/2 -translate-x-1/2 whitespace-nowrap
-                  text-xs font-semibold tracking-wider
+                  absolute top-14 left-1/2 -translate-x-1/2 whitespace-nowrap
+                  text-sm font-bold tracking-widest drop-shadow-md
                   transition-all duration-300
-                  ${isExpanded ? "text-foreground scale-125" : "text-muted-foreground"}
+                  ${isExpanded ? "text-white scale-125 drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]" : "text-white"}
                 `}
                 >
                   {item.title}
                 </div>
 
                 {isExpanded && (
-                  <Card className={`absolute top-20 left-1/2 -translate-x-1/2 w-64 ${c.bg10} backdrop-blur-lg border ${c.border30} shadow-xl ${c.shadow20} overflow-visible`}>
-                    <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 ${c.bg50}`}></div>
+                  <Card className="absolute top-20 left-1/2 -translate-x-1/2 w-64 bg-black/90 backdrop-blur-lg border-white/30 shadow-xl shadow-white/10 overflow-visible">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/50"></div>
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-center">
                         <Badge
@@ -298,18 +267,18 @@ export default function RadialOrbitalTimeline({
                             ? "IN PROGRESS"
                             : "PENDING"}
                         </Badge>
-                        <span className="text-xs font-mono text-muted-foreground">
+                        <span className="text-xs font-mono text-white/50">
                           {item.date}
                         </span>
                       </div>
-                      <CardTitle className="text-sm mt-2 text-foreground">
+                      <CardTitle className="text-sm mt-2 text-white">
                         {item.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="text-xs text-foreground/80">
+                    <CardContent className="text-xs text-white/80">
                       <p>{item.content}</p>
 
-                      <div className="mt-4 pt-3 border-t border-border">
+                      <div className="mt-4 pt-3 border-t border-white/10">
                         <div className="flex justify-between items-center text-xs mb-1">
                           <span className="flex items-center">
                             <Zap size={10} className="mr-1" />
@@ -317,19 +286,19 @@ export default function RadialOrbitalTimeline({
                           </span>
                           <span className="font-mono">{item.energy}%</span>
                         </div>
-                        <div className="w-full h-1 bg-foreground/10 rounded-full overflow-hidden">
+                        <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
                           <div
-                            className={`h-full ${c.bg}`}
+                            className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
                             style={{ width: `${item.energy}%` }}
                           ></div>
                         </div>
                       </div>
 
                       {item.relatedIds.length > 0 && (
-                        <div className="mt-4 pt-3 border-t border-border">
+                        <div className="mt-4 pt-3 border-t border-white/10">
                           <div className="flex items-center mb-2">
-                            <Link size={10} className="text-muted-foreground mr-1" />
-                            <h4 className="text-xs uppercase tracking-wider font-medium text-muted-foreground">
+                            <Link size={10} className="text-white/70 mr-1" />
+                            <h4 className="text-xs uppercase tracking-wider font-medium text-white/70">
                               Connected Nodes
                             </h4>
                           </div>
@@ -343,7 +312,7 @@ export default function RadialOrbitalTimeline({
                                   key={relatedId}
                                   variant="outline"
                                   size="sm"
-                                  className={`flex items-center h-6 px-2 py-0 text-xs rounded-none ${c.border30} bg-transparent ${c.hoverBg5} text-foreground/80 ${c.hoverText} transition-all`}
+                                  className="flex items-center h-6 px-2 py-0 text-xs rounded-none border-white/20 bg-transparent hover:bg-white/10 text-white/80 hover:text-white transition-all"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     toggleItem(relatedId);
@@ -352,7 +321,7 @@ export default function RadialOrbitalTimeline({
                                   {relatedItem?.title}
                                   <ArrowRight
                                     size={8}
-                                    className="ml-1 text-foreground/60"
+                                    className="ml-1 text-white/60"
                                   />
                                 </Button>
                               );

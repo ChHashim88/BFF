@@ -187,15 +187,10 @@ const AccordionGallery = ({
     if (trigger === 'hover') setActive(i);
   };
 
-  const handleClick = (i: number, e: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (i: number, e: React.MouseEvent) => {
     if (i !== active) {
       e.preventDefault();
       setActive(i);
-    } else {
-      const href = e.currentTarget.getAttribute('href');
-      if (!href || href === '#') {
-        e.preventDefault();
-      }
     }
   };
 

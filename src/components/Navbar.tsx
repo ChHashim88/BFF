@@ -25,7 +25,7 @@ const navLinks = [
 
 export function Navbar() {
   return (
-    <header className="fixed left-1/2 top-6 z-50 w-[calc(100%-3rem)] lg:w-[calc(100%-6rem)] xl:w-[calc(100%-12rem)] max-w-[1400px] -translate-x-1/2 rounded-full">
+    <header className="fixed left-1/2 top-6 z-50 w-[96%] lg:w-[98%] xl:w-[92%] max-w-[1400px] -translate-x-1/2 rounded-full">
       {/* Liquid Glass Background Layers */}
       <div className="absolute inset-0 z-0 h-full w-full rounded-full shadow-[0_0_6px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3px_rgba(0,0,0,0.9),inset_-3px_-3px_0.5px_-3px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(255,255,255,0.15)] transition-all dark:shadow-[0_0_8px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3.5px_rgba(255,255,255,0.09),inset_-3px_-3px_0.5px_-3.5px_rgba(255,255,255,0.85),inset_1px_1px_1px_-0.5px_rgba(255,255,255,0.6),inset_-1px_-1px_1px_-0.5px_rgba(255,255,255,0.6),inset_0_0_6px_6px_rgba(255,255,255,0.12),inset_0_0_2px_2px_rgba(255,255,255,0.06),0_0_12px_rgba(0,0,0,0.15)]" />
       <div
@@ -42,7 +42,7 @@ export function Navbar() {
 
         {/* Links */}
         <nav className="hidden lg:flex flex-1 items-center justify-center overflow-visible mx-2">
-          <ul className="flex items-center justify-center gap-1 xl:gap-2 2xl:gap-4 whitespace-nowrap px-1 text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-xs text-foreground/85 transition-all duration-300">
+          <ul className="flex items-center justify-center gap-1 xl:gap-1.5 2xl:gap-4 whitespace-nowrap px-1 text-[8px] lg:text-[8.5px] xl:text-[10px] 2xl:text-xs text-foreground/85 transition-all duration-300">
             {navLinks.map((link) => (
               <li key={link.label} className="group relative">
                 {link.dropdown ? (
