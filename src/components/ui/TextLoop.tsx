@@ -63,7 +63,6 @@ const TextLoop = ({
   pauseOnHover = true,
   className = "",
   style = {},
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);

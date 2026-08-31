@@ -144,7 +144,6 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
         ref={ref}
         style={
           {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore - CSS custom properties are valid
             "--theme-color": themeColor,
           } as React.CSSProperties

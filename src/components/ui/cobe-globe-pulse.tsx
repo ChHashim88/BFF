@@ -132,7 +132,7 @@ export function GlobePulse({
 
       let inViewport = true;
       const io = new IntersectionObserver((entries) => {
-        inViewport = entries[0].isIntersecting;
+        inViewport = entries[0]?.isIntersecting ?? false;
       });
       io.observe(canvas);
 

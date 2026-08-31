@@ -57,8 +57,7 @@ export default function ScrollAdventure() {
   const handleWheel = (e: WheelEvent) => {
     if (scrolling.current) return;
     scrolling.current = true;
-    if (e.deltaY > 0) navigateDown();
-    else navigateUp();
+    e.deltaY > 0 ? navigateDown() : navigateUp();
     setTimeout(() => (scrolling.current = false), animTime);
   };
 

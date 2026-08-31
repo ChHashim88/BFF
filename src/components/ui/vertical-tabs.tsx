@@ -32,8 +32,6 @@ const AUTO_PLAY_DURATION = 5000;
 export default function VerticalTabs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
   const handleNext = useCallback(() => {
     setDirection(1);
     setActiveIndex((prev) => (prev + 1) % SERVICES.length);
@@ -48,18 +46,7 @@ export default function VerticalTabs() {
     if (index === activeIndex) return;
     setDirection(index > activeIndex ? 1 : -1);
     setActiveIndex(index);
-    setIsPaused(false);
   };
-
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      handleNext();
-    }, AUTO_PLAY_DURATION);
-
-    return () => clearInterval(interval);
-  }, [activeIndex, isPaused, handleNext]);
 
   const variants = {
     enter: {
@@ -80,7 +67,7 @@ export default function VerticalTabs() {
       <div className="w-full px-6 lg:px-12 xl:px-24 mx-auto max-w-[1350px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Content */}
-          <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 pt-4 min-h-[320px] md:min-h-[400px]">
+          <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 pt-4">
             <div className="flex flex-col space-y-0">
               {SERVICES.map((service, index) => {
                 const isActive = activeIndex === index;
@@ -97,16 +84,7 @@ export default function VerticalTabs() {
                   >
                     <div className="absolute left-[-16px] md:left-[-24px] top-0 bottom-0 w-[2px] bg-muted">
                       {isActive && (
-                        <motion.div
-                          key={`progress-${index}-${isPaused}`}
-                          className="absolute top-0 left-0 w-full bg-foreground origin-top"
-                          initial={{ height: "0%" }}
-                          animate={isPaused ? { height: "0%" } : { height: "100%" }}
-                          transition={{
-                            duration: AUTO_PLAY_DURATION / 1000,
-                            ease: "linear",
-                          }}
-                        />
+                        <div className="absolute top-0 left-0 w-full h-full bg-foreground" />
                       )}
                     </div>
 
@@ -124,7 +102,7 @@ export default function VerticalTabs() {
                         {service.title}
                       </span>
 
-                      <AnimatePresence>
+                      <AnimatePresence mode="wait">
                         {isActive && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
@@ -150,11 +128,7 @@ export default function VerticalTabs() {
           </div>
 
           <div className="lg:col-span-7 flex flex-col justify-end h-full order-1 lg:order-2">
-            <div
-              className="relative group/gallery"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
+            <div className="relative group/gallery">
               <div className="relative aspect-4/5 md:aspect-4/3 lg:aspect-16/11 rounded-3xl md:rounded-[2.5rem] overflow-hidden bg-muted/30 border border-border/40">
                 <AnimatePresence>
                   <motion.div
@@ -170,8 +144,8 @@ export default function VerticalTabs() {
                     onClick={handleNext}
                   >
                     <img
-                      src={SERVICES[activeIndex].image}
-                      alt={SERVICES[activeIndex].title}
+                      src={SERVICES[activeIndex]?.image}
+                      alt={SERVICES[activeIndex]?.title}
                       className="w-full h-full object-cover m-0! p-0! block"
                     />
 

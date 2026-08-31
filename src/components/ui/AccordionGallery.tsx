@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
 
@@ -233,16 +231,13 @@ const AccordionGallery = ({
         return (
           <Tag
             key={i}
-
             ref={(el: any) => (panelRefs.current[i] = el)}
             className={`ag-panel${isActive ? " ag-panel--active" : ""}`}
             style={{ borderRadius: `${radius}px` }}
             href={item.link || undefined}
-
             onClick={(e: any) => handleClick(i, e)}
             onMouseEnter={() => handleEnter(i)}
             onFocus={() => setActive(i)}
-
             onKeyDown={(e: any) => handleKeyDown(i, e)}
             role="listitem"
             tabIndex={0}
@@ -250,7 +245,6 @@ const AccordionGallery = ({
             aria-label={item.label}
           >
             <span className="ag-panel__frame">
-              {}
               <span className="ag-panel__media" ref={(el: any) => (mediaRefs.current[i] = el)}>
                 <img src={item.image} alt={item.alt || item.label || ""} draggable="false" />
               </span>
@@ -258,9 +252,7 @@ const AccordionGallery = ({
             </span>
             {showLabels && (
               <span className="ag-panel__label" aria-hidden="true">
-                {}
                 <span className="ag-panel__bar" ref={(el: any) => (barRefs.current[i] = el)} />
-                {}
                 <span
                   className="ag-panel__text-wrapper"
                   ref={(el: any) => (textRefs.current[i] = el)}

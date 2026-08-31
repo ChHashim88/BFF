@@ -64,7 +64,7 @@ export const animationLogic = {
     ];
     const waveSpeed = 30,
       waveThickness = 40,
-      maxR = dotRings[dotRings.length - 1].radius + waveThickness;
+      maxR = dotRings[dotRings.length - 1]!.radius + waveThickness;
     const rotMag = 0.15,
       rotSpeed = 3;
     return (timestamp) => {
@@ -424,8 +424,8 @@ export const animationLogic = {
 export type AnimationId = keyof typeof animationLogic;
 
 export const useCanvasAnimation = (
-  canvasRef: React.RefObject<HTMLCanvasElement>,
-  animationId?: AnimationId,
+  canvasRef: React.RefObject<HTMLCanvasElement | null>,
+  animationId?: AnimationId
 ) => {
   useEffect(() => {
     if (!animationId) return;
