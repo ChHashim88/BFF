@@ -5,8 +5,10 @@ import { Navbar } from "@/components/Navbar";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { DestinationCard } from "@/components/ui/card-21";
 import AccordionGallery from "@/components/ui/AccordionGallery";
-import ScrollAdventure from "@/components/ui/animated-scroll";
-import VerticalTabs from "@/components/ui/vertical-tabs";
+import OpportunitySection from "@/components/ui/opportunity-section";
+import FUIBentoGridDark from "@/components/ui/bento-grid";
+import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
+import { Search, FileText, Blocks, CircleDollarSign, Rocket, Users } from "lucide-react";
 import * as React from "react";
 
 const ExpandableText = ({ shortText, fullText }: { shortText: string, fullText: React.ReactNode }) => {
@@ -47,6 +49,75 @@ const ExpandableText = ({ shortText, fullText }: { shortText: string, fullText: 
     </div>
   );
 };
+
+const timelineData = [
+  {
+    id: 1,
+    title: "Source",
+    date: "Jan 2026",
+    content: "High potential film projects.",
+    category: "Sourcing",
+    icon: Search,
+    relatedIds: [2],
+    status: "completed" as const,
+    energy: 100,
+  },
+  {
+    id: 2,
+    title: "Evaluate",
+    date: "Feb 2026",
+    content: "Disciplined commercial evaluation.",
+    category: "Evaluation",
+    icon: FileText,
+    relatedIds: [1, 3],
+    status: "completed" as const,
+    energy: 90,
+  },
+  {
+    id: 3,
+    title: "Structure",
+    date: "Mar 2026",
+    content: "Investor-aligned legal and financial structures.",
+    category: "Structuring",
+    icon: Blocks,
+    relatedIds: [2, 4],
+    status: "in-progress" as const,
+    energy: 75,
+  },
+  {
+    id: 4,
+    title: "Finance",
+    date: "Apr 2026",
+    content: "Access capital efficiently.",
+    category: "Financing",
+    icon: CircleDollarSign,
+    relatedIds: [3, 5],
+    status: "pending" as const,
+    energy: 50,
+  },
+  {
+    id: 5,
+    title: "Bring To Market",
+    date: "May 2026",
+    content: "Strategic distribution and positioning.",
+    category: "Launch",
+    icon: Rocket,
+    relatedIds: [4, 6],
+    status: "pending" as const,
+    energy: 30,
+  },
+  {
+    id: 6,
+    title: "Investor Experience",
+    date: "Jun 2026",
+    content: "Transparent ongoing and informative.",
+    category: "Management",
+    icon: Users,
+    relatedIds: [5],
+    status: "pending" as const,
+    energy: 10,
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -489,16 +560,11 @@ function Index() {
           </div>
         </section>
 
-        {/* Scroll Adventure Section */}
-        <section className="relative w-full h-screen">
-          <ScrollAdventure />
-        </section>
-
-        {/* Vertical Tabs Section */}
-        <VerticalTabs />
+        {/* Bento Grid Section */}
+        <FUIBentoGridDark />
 
         {/* Gallery Section */}
-        <section className="relative w-full bg-background px-6 py-16 lg:py-24 lg:px-12 xl:px-24 flex flex-col justify-center items-center">
+        <section className="relative w-full bg-background px-6 py-16 lg:py-24 lg:px-12 xl:px-24 flex lg:hidden flex-col justify-center items-center">
           <div className="mx-auto w-full max-w-[1350px]">
             <AccordionGallery
               items={[
@@ -545,6 +611,43 @@ function Index() {
               radius={16}
               orientation="horizontal"
             />
+          </div>
+        </section>
+
+        {/* Opportunity Section */}
+        <OpportunitySection />
+
+        {/* Timeline Section */}
+        <section className="relative w-full bg-background pb-12 lg:pb-16 pt-0 -mt-12 px-6 lg:px-12 xl:px-24 flex justify-center overflow-hidden">
+          <div className="mx-auto w-full max-w-[1350px] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+
+            {/* Left side text */}
+            <div className="flex flex-col space-y-6 lg:pr-8 z-10 text-foreground order-2 lg:order-1">
+              <h3 className="text-lg font-bold tracking-tight uppercase">FILM IS NEXT</h3>
+              <div className="space-y-5 text-sm text-muted-foreground leading-relaxed font-medium">
+                <p>
+                  Bringing film investing into the modern era requires more than putting traditional film deals online.
+                  It requires investor-focused structures, disciplined commercial evaluation, a repeatable project pipeline, and a platform that brings the entire investment experience together.
+                </p>
+                <p>
+                  That is the system BFF is building.
+                </p>
+              </div>
+            </div>
+
+            {/* Right side orbital - Fixed Height */}
+            <div className="relative w-full h-[500px] flex items-center justify-center order-1 lg:order-2">
+              <RadialOrbitalTimeline timelineData={timelineData} />
+            </div>
+
+          </div>
+        </section>
+
+        {/* Placeholder Section */}
+        <section className="relative w-full min-h-[50vh] bg-background py-24 flex items-center justify-center border-t border-border/20">
+          <div className="text-center text-muted-foreground opacity-50">
+            <h2 className="text-2xl font-bold mb-2">New Section Area</h2>
+            <p className="text-sm">Blank placeholder ready for new content</p>
           </div>
         </section>
       </main>

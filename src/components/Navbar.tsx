@@ -25,7 +25,7 @@ const navLinks = [
 
 export function Navbar() {
   return (
-    <header className="fixed left-1/2 top-4 z-50 w-[98%] max-w-[1600px] -translate-x-1/2 rounded-full">
+    <header className="fixed left-1/2 top-6 z-50 w-[calc(100%-3rem)] lg:w-[calc(100%-6rem)] xl:w-[calc(100%-12rem)] max-w-[1400px] -translate-x-1/2 rounded-full">
       {/* Liquid Glass Background Layers */}
       <div className="absolute inset-0 z-0 h-full w-full rounded-full shadow-[0_0_6px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3px_rgba(0,0,0,0.9),inset_-3px_-3px_0.5px_-3px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(255,255,255,0.15)] transition-all dark:shadow-[0_0_8px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3.5px_rgba(255,255,255,0.09),inset_-3px_-3px_0.5px_-3.5px_rgba(255,255,255,0.85),inset_1px_1px_1px_-0.5px_rgba(255,255,255,0.6),inset_-1px_-1px_1px_-0.5px_rgba(255,255,255,0.6),inset_0_0_6px_6px_rgba(255,255,255,0.12),inset_0_0_2px_2px_rgba(255,255,255,0.06),0_0_12px_rgba(0,0,0,0.15)]" />
       <div
@@ -33,16 +33,16 @@ export function Navbar() {
         style={{ backdropFilter: 'url("#navbar-glass")' }}
       />
 
-      <div className="relative z-10 mx-auto flex h-14 items-center justify-between px-4 lg:px-8">
-        <div className="mr-3 lg:mr-6 shrink-0">
+      <div className="relative z-10 mx-auto flex h-14 items-center justify-between pl-2 pr-3 lg:pl-2 lg:pr-4">
+        <div className="shrink-0">
           <a href="#" className="flex items-center">
             <img src="/images/1212.png" alt="BFF Logo" className="h-14 w-auto lg:h-16 scale-110 lg:scale-[1.2] origin-left" />
           </a>
         </div>
 
         {/* Links */}
-        <nav className="hidden lg:flex flex-1 items-center justify-center overflow-hidden">
-          <ul className="flex items-center justify-center gap-2 xl:gap-3 2xl:gap-5 whitespace-nowrap px-2 text-[10px] xl:text-[11px] 2xl:text-nav text-foreground/85 transition-all duration-300">
+        <nav className="hidden lg:flex flex-1 items-center justify-center overflow-visible mx-2">
+          <ul className="flex items-center justify-center gap-1 xl:gap-2 2xl:gap-4 whitespace-nowrap px-1 text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-xs text-foreground/85 transition-all duration-300">
             {navLinks.map((link) => (
               <li key={link.label} className="group relative">
                 {link.dropdown ? (
@@ -75,9 +75,9 @@ export function Navbar() {
         </nav>
 
         {/* CTA */}
-        <div className="ml-3 lg:ml-6 shrink-0 flex items-center gap-2 lg:gap-3">
+        <div className="shrink-0 flex items-center gap-2">
           <ThemeToggle />
-          <button className="cursor-pointer rounded-full bg-destructive px-5 py-2 text-btn text-destructive-foreground shadow-sm transition-all duration-200 hover:scale-105 hover:bg-destructive/95 hover:shadow-md hover:shadow-destructive/25 active:scale-95">
+          <button className="cursor-pointer rounded-full bg-destructive px-3 py-1.5 lg:px-4 lg:py-1.5 text-[9px] lg:text-xs font-semibold text-destructive-foreground shadow-sm transition-all duration-200 hover:scale-105 hover:bg-destructive/95 hover:shadow-md hover:shadow-destructive/25 active:scale-95 whitespace-nowrap">
             Join Waitlist
           </button>
         </div>
