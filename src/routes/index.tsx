@@ -799,7 +799,7 @@ function Index() {
             </div>
 
             {/* Right side orbital - Fixed Height */}
-            <div className="relative w-full h-[500px] flex items-center justify-center order-1 lg:order-2">
+            <div className="relative w-full h-[600px] flex items-center justify-center order-1 lg:order-2 py-12 scale-105 sm:scale-110 lg:scale-[1.15]">
               <RadialOrbitalTimeline timelineData={opportunityTimelineData} />
             </div>
           </div>
@@ -947,7 +947,7 @@ function Index() {
             </div>
 
             {/* Sparkles & Orbital Container */}
-            <div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md mt-0 relative">
+            <div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md mt-0 relative py-12">
               {/* Sparkles Animation */}
               <div className="w-full max-w-[40rem] h-40 relative z-0">
                 {/* Gradients */}
@@ -971,7 +971,7 @@ function Index() {
               </div>
 
               {/* Radial Orbital Timeline */}
-              <div className="relative w-full h-[500px] flex items-center justify-center -mt-16 z-10 scale-105 sm:scale-110 lg:scale-[1.15]">
+              <div className="relative w-full h-[600px] flex items-center justify-center -mt-16 z-10 scale-105 sm:scale-110 lg:scale-[1.15]">
                 <RadialOrbitalTimeline timelineData={executionTimelineData} colorTheme="solidRed" />
               </div>
             </div>

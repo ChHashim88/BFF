@@ -147,7 +147,7 @@ export default function RadialOrbitalTimelineDark({ timelineData }: RadialOrbita
 
   return (
     <div
-      className="w-full h-full min-h-[400px] flex flex-col items-center justify-center overflow-hidden"
+      className="w-full h-full min-h-[400px] flex flex-col items-center justify-center overflow-visible"
       ref={containerRef}
       onClick={handleContainerClick}
     >

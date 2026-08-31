@@ -80,7 +80,7 @@ export default function VerticalTabs() {
       <div className="w-full px-6 lg:px-12 xl:px-24 mx-auto max-w-[1350px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Content */}
-          <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 pt-4">
+          <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 pt-4 min-h-[320px] md:min-h-[400px]">
             <div className="flex flex-col space-y-0">
               {SERVICES.map((service, index) => {
                 const isActive = activeIndex === index;
@@ -124,7 +124,7 @@ export default function VerticalTabs() {
                         {service.title}
                       </span>
 
-                      <AnimatePresence mode="wait">
+                      <AnimatePresence>
                         {isActive && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
