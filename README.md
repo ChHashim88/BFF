@@ -27,4 +27,5 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
 # GLOBE-3D

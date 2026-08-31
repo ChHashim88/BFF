@@ -46,7 +46,7 @@ export function BentoCard({
         className,
         "group relative flex flex-col overflow-hidden rounded-xl",
         "bg-black dark:bg-[#0a0a0a] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset] shadow-sm ring-1 ring-white/10",
-        "data-[dark]:bg-zinc-900 data-[dark]:ring-white/15"
+        "data-[dark]:bg-zinc-900 data-[dark]:ring-white/15",
       )}
     >
       <div className="relative h-[22rem] shrink-0">
@@ -63,9 +63,7 @@ export function BentoCard({
         <p className="mt-1 text-xl font-medium tracking-tight text-white group-data-[dark]:text-white">
           {title}
         </p>
-        <p className="mt-2 max-w-[600px] text-sm/6 text-zinc-300">
-          {description}
-        </p>
+        <p className="mt-2 max-w-[600px] text-sm/6 text-zinc-300">{description}</p>
       </div>
     </motion.div>
   );

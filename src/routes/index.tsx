@@ -1,6 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
-import { Check, ArrowRight, Clapperboard, Award, Globe, PieChart, TrendingUp, Handshake } from "lucide-react";
+import {
+  Check,
+  ArrowRight,
+  Clapperboard,
+  Award,
+  Globe,
+  PieChart,
+  TrendingUp,
+  Handshake,
+} from "lucide-react";
 import TextLoop from "@/components/ui/TextLoop";
 import { ApiRateLimitingCard } from "@/components/ui/api-rate-limiting-card";
 import { SparklesCore } from "@/components/ui/sparkles";
@@ -16,7 +25,13 @@ import RadialOrbitalTimelineDark from "@/components/ui/radial-orbital-timeline-d
 import { Search, FileText, Blocks, CircleDollarSign, Rocket, Users } from "lucide-react";
 import * as React from "react";
 
-const ExpandableText = ({ shortText, fullText }: { shortText: string, fullText: React.ReactNode }) => {
+const ExpandableText = ({
+  shortText,
+  fullText,
+}: {
+  shortText: string;
+  fullText: React.ReactNode;
+}) => {
   const [expanded, setExpanded] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -40,16 +55,18 @@ const ExpandableText = ({ shortText, fullText }: { shortText: string, fullText: 
         <p>
           {shortText}{" "}
           <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setExpanded(true); }}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setExpanded(true);
+            }}
             className="inline-flex items-center text-white font-black text-lg hover:text-white/80 transition-colors ml-1 animate-pulse"
           >
             &gt;
           </button>
         </p>
       ) : (
-        <div className="space-y-3 animate-in fade-in duration-500">
-          {fullText}
-        </div>
+        <div className="space-y-3 animate-in fade-in duration-500">{fullText}</div>
       )}
     </div>
   );
@@ -129,7 +146,8 @@ const executionTimelineData = [
     id: 1,
     title: "Project Access",
     date: "Sourcing",
-    content: "A growing pipeline sourced through filmmakers, producers, representatives, and development relationships—not dependent on a single source of projects.",
+    content:
+      "A growing pipeline sourced through filmmakers, producers, representatives, and development relationships—not dependent on a single source of projects.",
     category: "Access",
     icon: Search,
     relatedIds: [2],
@@ -140,7 +158,8 @@ const executionTimelineData = [
     id: 2,
     title: "Disciplined Greenlight",
     date: "Evaluation",
-    content: "A rigorous, proprietary evaluation methodology that tests each project’s creative strength, audience thesis, commercial potential, capitalization, execution risk, and path to market.",
+    content:
+      "A rigorous, proprietary evaluation methodology that tests each project’s creative strength, audience thesis, commercial potential, capitalization, execution risk, and path to market.",
     category: "Greenlight",
     icon: FileText,
     relatedIds: [1, 3],
@@ -151,7 +170,8 @@ const executionTimelineData = [
     id: 3,
     title: "Production Execution",
     date: "Production",
-    content: "Experienced producers, defined budgets, clear agreements, accountable milestones, and professional oversight from greenlight through delivery.",
+    content:
+      "Experienced producers, defined budgets, clear agreements, accountable milestones, and professional oversight from greenlight through delivery.",
     category: "Execution",
     icon: Blocks,
     relatedIds: [2, 4],
@@ -162,7 +182,8 @@ const executionTimelineData = [
     id: 4,
     title: "Distribution",
     date: "Market",
-    content: "Global distribution experience and commercial relationships that inform which projects move forward—and how they are positioned to reach audiences.",
+    content:
+      "Global distribution experience and commercial relationships that inform which projects move forward—and how they are positioned to reach audiences.",
     category: "Distribution",
     icon: Rocket,
     relatedIds: [3, 5],
@@ -173,7 +194,8 @@ const executionTimelineData = [
     id: 5,
     title: "Platform Oversight",
     date: "Management",
-    content: "Standalone project structures, disciplined capital management, consistent reporting, and a platform designed to give investors ongoing visibility.",
+    content:
+      "Standalone project structures, disciplined capital management, consistent reporting, and a platform designed to give investors ongoing visibility.",
     category: "Platform",
     icon: Users,
     relatedIds: [4],
@@ -214,34 +236,34 @@ function Index() {
           <div className="relative z-10 mx-auto grid w-full max-w-[1400px] items-center gap-12 lg:grid-cols-2">
             <div className="col-start-1 row-start-1 lg:col-auto lg:row-auto z-10 flex flex-col items-center justify-center space-y-6 text-center max-w-2xl mx-auto lg:mx-0 lg:items-start lg:text-left opacity-100">
               <h1 className="text-h1 text-foreground">
-                Film Investing.<br />
-                <span className="text-destructive">Reimagined</span><br />
+                Film Investing.
+                <br />
+                <span className="text-destructive">Reimagined</span>
+                <br />
                 for Investors.
               </h1>
 
               <div className="flex flex-col items-center lg:items-start space-y-4">
                 {/* Subtitle text */}
                 <p className="text-subtitle text-foreground/90 max-w-[280px] sm:max-w-md lg:max-w-none">
-                  Big Film Fund is creating a new way to finance movies – powered by a
-                  technology platform that connects investors, filmmakers, and
-                  audiences.
+                  Big Film Fund is creating a new way to finance movies – powered by a technology
+                  platform that connects investors, filmmakers, and audiences.
                 </p>
                 {/* Body copy */}
                 <div className="hidden lg:block space-y-3.5 text-body-text text-muted-foreground">
                   <p>
-                    For everyday investors, that opens the door once largely reserved for
-                    Hollywood studios and industry insiders, to an opportunity to own a
-                    stake in the movies they believe in, and share in their success.
+                    For everyday investors, that opens the door once largely reserved for Hollywood
+                    studios and industry insiders, to an opportunity to own a stake in the movies
+                    they believe in, and share in their success.
                   </p>
                   <p className="font-semibold text-foreground">
                     But opening access to film investing is the beginning.
                   </p>
                   <p>
-                    Our model is designed for investors from the ground up – with clean
-                    ownership structures that align incentives with filmmakers and
-                    producers (without complex Hollywood recoupment waterfalls),
-                    rigorous commercial discipline from start to finish, all delivered with
-                    radical transparency.
+                    Our model is designed for investors from the ground up – with clean ownership
+                    structures that align incentives with filmmakers and producers (without complex
+                    Hollywood recoupment waterfalls), rigorous commercial discipline from start to
+                    finish, all delivered with radical transparency.
                   </p>
                 </div>
               </div>
@@ -276,9 +298,7 @@ function Index() {
               </div>
 
               {/* Shadow below the globe */}
-              <div
-                className="absolute -bottom-5 left-1/2 h-16 w-3/4 -translate-x-1/2 rounded-[100%] bg-black/15 blur-2xl"
-              />
+              <div className="absolute -bottom-5 left-1/2 h-16 w-3/4 -translate-x-1/2 rounded-[100%] bg-black/15 blur-2xl" />
             </div>
           </div>
         </section>
@@ -290,7 +310,9 @@ function Index() {
         >
           <div className="mx-auto w-full max-w-[1350px] flex flex-col space-y-10 lg:space-y-16">
             <div className="w-full text-center lg:text-left">
-              <h3 className="text-h3 text-destructive mb-4 font-bold tracking-tight">The Problem</h3>
+              <h3 className="text-h3 text-destructive mb-4 font-bold tracking-tight">
+                The Problem
+              </h3>
               <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-700 cursor-default">
                 Film investing has never been built for investors.
               </h2>
@@ -299,30 +321,47 @@ function Index() {
                 <div className="flex flex-col gap-4 sm:gap-6 lg:pr-8 xl:pr-16 order-2 lg:order-1 mt-8 lg:mt-0">
                   {/* Point 1 */}
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
-                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">01</span>
+                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">
+                      01
+                    </span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      For most people, investing in Hollywood films has been out of reach. For those who are able to participate, it is too often opaque, complicated, and structured around everyone but the investor.
+                      For most people, investing in Hollywood films has been out of reach. For those
+                      who are able to participate, it is too often opaque, complicated, and
+                      structured around everyone but the investor.
                     </p>
                   </div>
                   {/* Point 2 */}
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
-                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">02</span>
+                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">
+                      02
+                    </span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      For decades, opportunities have largely remained gate kept within studios, private networks, and a small circle of Hollywood insiders. Audiences may help make a movie successful, but they rarely have the opportunity to own a stake in it or share in its financial upside.
+                      For decades, opportunities have largely remained gate kept within studios,
+                      private networks, and a small circle of Hollywood insiders. Audiences may help
+                      make a movie successful, but they rarely have the opportunity to own a stake
+                      in it or share in its financial upside.
                     </p>
                   </div>
                   {/* Point 3 */}
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
-                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">03</span>
+                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">
+                      03
+                    </span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      At the same time, those who have been able to participate in film investing, face complicated ownership structures, incomplete capitalization, limited visibility, and recoupment waterfalls that leave them waiting to see what, if anything, reaches them.
+                      At the same time, those who have been able to participate in film investing,
+                      face complicated ownership structures, incomplete capitalization, limited
+                      visibility, and recoupment waterfalls that leave them waiting to see what, if
+                      anything, reaches them.
                     </p>
                   </div>
                   {/* Point 4 */}
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
-                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">04</span>
+                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">
+                      04
+                    </span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      Understanding what you own, where your money went, and how you participate in a film’s success shouldn’t be hidden from you.
+                      Understanding what you own, where your money went, and how you participate in
+                      a film’s success shouldn’t be hidden from you.
                     </p>
                   </div>
                 </div>
@@ -355,25 +394,35 @@ function Index() {
           <div className="mx-auto w-full max-w-[1350px] flex flex-col space-y-10 lg:space-y-16">
             {/* Animated Glowing Heading */}
             <div className="w-full text-center lg:text-left">
-              <h3 className="text-h3 text-destructive mb-4 font-bold tracking-tight">The BFF Model</h3>
+              <h3 className="text-h3 text-destructive mb-4 font-bold tracking-tight">
+                The BFF Model
+              </h3>
               <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:drop-shadow-md dark:hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.7)] transition-all duration-700 cursor-default">
-                A New Model For<br />Film Investing
+                A New Model For
+                <br />
+                Film Investing
               </h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 {/* Left Side - Points */}
                 <div className="flex flex-col gap-4 sm:gap-6 lg:pr-8 xl:pr-16 order-2 lg:order-1 mt-8 lg:mt-0">
                   {/* Point 1 */}
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
-                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">01</span>
+                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">
+                      01
+                    </span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      Big Film Fund is building a platform designed to make film investing more accessible, and fundamentally, more investor-focused.
+                      Big Film Fund is building a platform designed to make film investing more
+                      accessible, and fundamentally, more investor-focused.
                     </p>
                   </div>
                   {/* Point 2 */}
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
-                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">02</span>
+                    <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2">
+                      02
+                    </span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      In addition to opening the door to film investment opportunities for every day investors, BFF has designed a new model around a few clear principles.
+                      In addition to opening the door to film investment opportunities for every day
+                      investors, BFF has designed a new model around a few clear principles.
                     </p>
                   </div>
                 </div>
@@ -393,7 +442,8 @@ function Index() {
                     </span>
                   </div>
                 </div>
-              </div>  </div>
+              </div>{" "}
+            </div>
           </div>
         </section>
 
@@ -404,7 +454,9 @@ function Index() {
         >
           <div className="mx-auto w-full max-w-[1350px] flex flex-col items-center text-center space-y-6">
             <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
-              The BFF Model Is Built On<br />Three Core Principles
+              The BFF Model Is Built On
+              <br />
+              Three Core Principles
             </h2>
             <p className="text-subtitle text-muted-foreground max-w-2xl">
               A simpler, more transparent, more aligned way to invest in film
@@ -424,16 +476,24 @@ function Index() {
                     fullText={
                       <>
                         <p>
-                          In traditional film finance, a movie can generate revenue while its investors are left wondering where the money went. One film’s earnings may become entangled with other projects, shared company expenses, and layers of participants who are paid before the investor.
+                          In traditional film finance, a movie can generate revenue while its
+                          investors are left wondering where the money went. One film’s earnings may
+                          become entangled with other projects, shared company expenses, and layers
+                          of participants who are paid before the investor.
                         </p>
                         <p>
-                          BFF is designed to preserve a clean line between a film’s performance and its investors’ participation.
+                          BFF is designed to preserve a clean line between a film’s performance and
+                          its investors’ participation.
                         </p>
                         <p>
-                          Each film stands on its own - with its own company, investors, capitalization, budget, accounting, revenue, and distributions.
+                          Each film stands on its own - with its own company, investors,
+                          capitalization, budget, accounting, revenue, and distributions.
                         </p>
                         <p>
-                          The performance of one film is not mixed with the economics of another. Investors can evaluate a standalone opportunity, understand exactly what they own, and follow how the film’s performance translates into their participation.
+                          The performance of one film is not mixed with the economics of another.
+                          Investors can evaluate a standalone opportunity, understand exactly what
+                          they own, and follow how the film’s performance translates into their
+                          participation.
                         </p>
                       </>
                     }
@@ -444,13 +504,17 @@ function Index() {
                   description: (
                     <>
                       <p>
-                        Each BFF film is maintained as a separate legal and economic entity. No other BFF film’s costs or losses are charged against it, and its capital, expenses, revenue, reporting, and distributions remain attached only to that project.
+                        Each BFF film is maintained as a separate legal and economic entity. No
+                        other BFF film’s costs or losses are charged against it, and its capital,
+                        expenses, revenue, reporting, and distributions remain attached only to that
+                        project.
                       </p>
                       <p>
-                        This avoids cross-collateralization between BFF films and preserves a clean financial picture for each investment.
+                        This avoids cross-collateralization between BFF films and preserves a clean
+                        financial picture for each investment.
                       </p>
                     </>
-                  )
+                  ),
                 }}
               />
             </div>
@@ -468,13 +532,15 @@ function Index() {
                     fullText={
                       <>
                         <p>
-                          In traditional film finance, not everyone shares in a movie’s revenue at the same time. The money is distributed in a predefined order, and investors often have to wait while others are paid first.
+                          In traditional film finance, not everyone shares in a movie’s revenue at
+                          the same time. The money is distributed in a predefined order, and
+                          investors often have to wait while others are paid first.
                         </p>
+                        <p>BFF is designed differently.</p>
                         <p>
-                          BFF is designed differently.
-                        </p>
-                        <p>
-                          When distributable revenue is received, investors, filmmakers, and BFF participate according to clearly defined percentages — without a complex, sequential Hollywood recoupment waterfall.
+                          When distributable revenue is received, investors, filmmakers, and BFF
+                          participate according to clearly defined percentages — without a complex,
+                          sequential Hollywood recoupment waterfall.
                         </p>
                       </>
                     }
@@ -485,19 +551,28 @@ function Index() {
                   description: (
                     <>
                       <p>
-                        A recoupment waterfall establishes the order in which a film’s revenue is allocated among distributors, sales agents, investors, producers, and other participants.
+                        A recoupment waterfall establishes the order in which a film’s revenue is
+                        allocated among distributors, sales agents, investors, producers, and other
+                        participants.
                       </p>
                       <p>
-                        These structures often include multiple tiers of fees, expenses, repayment priorities, and negotiated positions. A party at a later tier generally does not participate until the requirements of the tiers ahead of it have been satisfied.
+                        These structures often include multiple tiers of fees, expenses, repayment
+                        priorities, and negotiated positions. A party at a later tier generally does
+                        not participate until the requirements of the tiers ahead of it have been
+                        satisfied.
                       </p>
                       <p>
-                        BFF does not use a traditional sequential recoupment waterfall among its film participants. Once distributable revenue reaches the film entity, investors, filmmakers, and BFF share in the same revenue event according to their respective participation percentages.
+                        BFF does not use a traditional sequential recoupment waterfall among its
+                        film participants. Once distributable revenue reaches the film entity,
+                        investors, filmmakers, and BFF share in the same revenue event according to
+                        their respective participation percentages.
                       </p>
                       <p>
-                        Traditional waterfalls ask who gets paid first. BFF defines how everyone participates together.
+                        Traditional waterfalls ask who gets paid first. BFF defines how everyone
+                        participates together.
                       </p>
                     </>
-                  )
+                  ),
                 }}
               />
             </div>
@@ -518,16 +593,23 @@ function Index() {
                           At BFF, commercial discipline isn’t a checkpoint. It’s a design principle.
                         </p>
                         <p>
-                          From the first review, the film’s creative ambition, audience, path to market, capitalization, and investor economics are evaluated as one integrated plan.
+                          From the first review, the film’s creative ambition, audience, path to
+                          market, capitalization, and investor economics are evaluated as one
+                          integrated plan.
                         </p>
                         <p>
-                          That discipline extends to how each film is funded. Before production begins, every BFF project must be fully capitalized for its anticipated journey to market — not simply for the cost of getting the film made.
+                          That discipline extends to how each film is funded. Before production
+                          begins, every BFF project must be fully capitalized for its anticipated
+                          journey to market — not simply for the cost of getting the film made.
                         </p>
                         <p>
-                          A project moves forward only when BFF believes it can be responsibly financed, professionally executed, and brought to market within a credible commercial framework.
+                          A project moves forward only when BFF believes it can be responsibly
+                          financed, professionally executed, and brought to market within a credible
+                          commercial framework.
                         </p>
                         <p>
-                          We don’t finance a production and hope a business emerges. We finance a plan designed to reach an audience.
+                          We don’t finance a production and hope a business emerges. We finance a
+                          plan designed to reach an audience.
                         </p>
                       </>
                     }
@@ -538,19 +620,26 @@ function Index() {
                   description: (
                     <>
                       <p>
-                        Traditional film financing often centers on the cost of getting a movie made, leaving marketing, delivery, distribution, and other commercialization needs to be solved later.
+                        Traditional film financing often centers on the cost of getting a movie
+                        made, leaving marketing, delivery, distribution, and other commercialization
+                        needs to be solved later.
                       </p>
                       <p>
-                        BFF takes a more complete approach by fully capitalizing every project around its anticipated production AND commercialization requirements - not simply the cost of getting the film made.
+                        BFF takes a more complete approach by fully capitalizing every project
+                        around its anticipated production AND commercialization requirements - not
+                        simply the cost of getting the film made.
                       </p>
                       <p>
-                        By accounting upfront for the resources required to complete, deliver, market, and distribute the film, we reduce the risk of reaching the end of production without a funded path to an audience.
+                        By accounting upfront for the resources required to complete, deliver,
+                        market, and distribute the film, we reduce the risk of reaching the end of
+                        production without a funded path to an audience.
                       </p>
                       <p>
-                        It’s not only a production budget. It’s a plan for the full path to the audience.
+                        It’s not only a production budget. It’s a plan for the full path to the
+                        audience.
                       </p>
                     </>
-                  )
+                  ),
                 }}
               />
             </div>
@@ -564,9 +653,15 @@ function Index() {
         >
           <div className="mx-auto w-full max-w-[1350px] flex flex-col space-y-10 lg:space-y-16">
             <div className="w-full text-center lg:text-left">
-              <h3 className="text-h3 text-destructive mb-4 font-bold tracking-tight">THE PLATFORM</h3>
+              <h3 className="text-h3 text-destructive mb-4 font-bold tracking-tight">
+                THE PLATFORM
+              </h3>
               <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-700 cursor-default">
-                Discover.<br />Invest.<br />Follow the Story.
+                Discover.
+                <br />
+                Invest.
+                <br />
+                Follow the Story.
               </h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mt-8 lg:mt-12">
                 {/* Left Side - Points */}
@@ -582,21 +677,28 @@ function Index() {
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
                     <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2"></span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      Through the BFF platform, investors can discover a curated selection of films, explore the creative and commercial case behind each project, and choose the opportunities they believe in.
+                      Through the BFF platform, investors can discover a curated selection of films,
+                      explore the creative and commercial case behind each project, and choose the
+                      opportunities they believe in.
                     </p>
                   </div>
                   {/* Point 3 */}
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
                     <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2"></span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      When investors participate in a film offering, their capital is pooled specifically for that project. They can invest in one film or build a personal portfolio across multiple standalone opportunities over time.
+                      When investors participate in a film offering, their capital is pooled
+                      specifically for that project. They can invest in one film or build a personal
+                      portfolio across multiple standalone opportunities over time.
                     </p>
                   </div>
                   {/* Point 4 */}
                   <div className="flex flex-col space-y-2 group bg-muted/40 dark:bg-muted/10 border border-border/50 p-5 sm:p-6 rounded-2xl lg:bg-transparent lg:border-transparent lg:p-0 lg:rounded-none transition-colors hover:bg-muted/60 dark:hover:bg-muted/20">
                     <span className="text-destructive text-label transition-transform duration-300 lg:group-hover:-translate-x-2"></span>
                     <p className="text-body-text text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                      And the experience doesn’t end when the investment is made. Through the BFF dashboard, investors can follow each film’s progress from financing through production, release, and revenue—with access to project milestones, investor updates, financial reporting, and distributions.
+                      And the experience doesn’t end when the investment is made. Through the BFF
+                      dashboard, investors can follow each film’s progress from financing through
+                      production, release, and revenue—with access to project milestones, investor
+                      updates, financial reporting, and distributions.
                     </p>
                   </div>
                   {/* Point 5 (Red Text) */}
@@ -635,25 +737,25 @@ function Index() {
             <AccordionGallery
               items={[
                 {
-                  image: '/Images 2/Discover Curated Films.jpg',
-                  label: 'Discover Curated Films',
-                  description: 'Find projects that have passed BFF’s review process.'
+                  image: "/Images 2/Discover Curated Films.jpg",
+                  label: "Discover Curated Films",
+                  description: "Find projects that have passed BFF’s review process.",
                 },
                 {
-                  image: '/Images 2/Explore and Invest.jpg',
-                  label: 'Explore & Invest',
-                  description: 'Understand the opportunity and choose what you believe in.'
+                  image: "/Images 2/Explore and Invest.jpg",
+                  label: "Explore & Invest",
+                  description: "Understand the opportunity and choose what you believe in.",
                 },
                 {
-                  image: '/Images 2/Follow The Journey.jpg',
-                  label: 'Follow the Journey',
-                  description: 'Track progress from financing through release.'
+                  image: "/Images 2/Follow The Journey.jpg",
+                  label: "Follow the Journey",
+                  description: "Track progress from financing through release.",
                 },
                 {
-                  image: '/Images 2/Build Your Portfolio.jpg',
-                  label: 'Build Your Portfolio',
-                  description: 'Manage multiple standalone film investments in one place.'
-                }
+                  image: "/Images 2/Build Your Portfolio.jpg",
+                  label: "Build Your Portfolio",
+                  description: "Manage multiple standalone film investments in one place.",
+                },
               ]}
               defaultIndex={2}
               expandRatio={0.52}
@@ -682,18 +784,17 @@ function Index() {
         {/* Timeline Section */}
         <section className="relative w-full bg-background pb-12 lg:pb-16 pt-0 -mt-12 px-6 lg:px-12 xl:px-24 flex justify-center overflow-hidden">
           <div className="mx-auto w-full max-w-[1350px] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-
             {/* Left side text */}
             <div className="flex flex-col space-y-6 lg:pr-8 z-10 text-foreground order-2 lg:order-1">
               <h3 className="text-lg font-bold tracking-tight uppercase">FILM IS NEXT</h3>
               <div className="space-y-5 text-sm text-muted-foreground leading-relaxed font-medium">
                 <p>
-                  Bringing film investing into the modern era requires more than putting traditional film deals online.
-                  It requires investor-focused structures, disciplined commercial evaluation, a repeatable project pipeline, and a platform that brings the entire investment experience together.
+                  Bringing film investing into the modern era requires more than putting traditional
+                  film deals online. It requires investor-focused structures, disciplined commercial
+                  evaluation, a repeatable project pipeline, and a platform that brings the entire
+                  investment experience together.
                 </p>
-                <p>
-                  That is the system BFF is building.
-                </p>
+                <p>That is the system BFF is building.</p>
               </div>
             </div>
 
@@ -701,7 +802,6 @@ function Index() {
             <div className="relative w-full h-[500px] flex items-center justify-center order-1 lg:order-2">
               <RadialOrbitalTimeline timelineData={opportunityTimelineData} />
             </div>
-
           </div>
         </section>
 
@@ -715,12 +815,15 @@ function Index() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 {/* Left Side - Content */}
                 <div className="flex flex-col gap-4 sm:gap-6 lg:pr-8 xl:pr-16 order-2 lg:order-1 mt-8 lg:mt-0 text-left">
-                  <h3 className="text-h3 text-destructive mb-2 font-bold tracking-tight uppercase">How We Make Money</h3>
+                  <h3 className="text-h3 text-destructive mb-2 font-bold tracking-tight uppercase">
+                    How We Make Money
+                  </h3>
                   <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-700 cursor-default">
                     Multiple Revenue Streams.
                   </h2>
                   <p className="text-body-text text-muted-foreground mt-4">
-                    Big Film Fund is building a platform business, with multiple complementary revenue streams not dependent on the success of any one movie.
+                    Big Film Fund is building a platform business, with multiple complementary
+                    revenue streams not dependent on the success of any one movie.
                   </p>
                 </div>
 
@@ -743,7 +846,8 @@ function Index() {
               {/* Center Line Below */}
               <div className="mt-16 lg:mt-24 w-full flex justify-center text-center">
                 <p className="text-lg md:text-xl font-medium text-foreground max-w-3xl leading-relaxed">
-                  Rather than depending on one movie or one source of income, BFF’s business model combines four complementary revenue streams:
+                  Rather than depending on one movie or one source of income, BFF’s business model
+                  combines four complementary revenue streams:
                 </p>
               </div>
 
@@ -778,26 +882,27 @@ function Index() {
           </div>
         </section>
 
-
         {/* New 4 Cards Section */}
         <section className="relative w-full bg-background pb-16 pt-0 flex items-center justify-center">
           <div className="mx-auto w-full max-w-[1350px] px-6 lg:px-12 xl:px-24">
-
-
             <div className="mt-0 text-center max-w-4xl mx-auto space-y-6 text-lg md:text-xl text-foreground font-medium px-4">
               <p>
-                Some of these revenue streams are generated through platform and project activity. Others depend on the commercial performance of the films themselves.
+                Some of these revenue streams are generated through platform and project activity.
+                Others depend on the commercial performance of the films themselves.
               </p>
               <p>
-                Together, they give BFF the potential to earn revenue at multiple points in the film lifecycle, and across a growing pipeline of standalone projects.
+                Together, they give BFF the potential to earn revenue at multiple points in the film
+                lifecycle, and across a growing pipeline of standalone projects.
               </p>
             </div>
           </div>
         </section>
 
         {/* Built to Execute Section */}
-        <section id="execute" className="relative w-full scroll-mt-24 px-6 lg:px-12 xl:px-24 py-16 lg:py-24 overflow-hidden flex flex-col justify-center bg-background">
-
+        <section
+          id="execute"
+          className="relative w-full scroll-mt-24 px-6 lg:px-12 xl:px-24 py-16 lg:py-24 overflow-hidden flex flex-col justify-center bg-background"
+        >
           <div className="mx-auto w-full max-w-[1350px] mt-12 flex flex-col space-y-10 lg:space-y-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               {/* Left Side - Text */}
@@ -809,9 +914,19 @@ function Index() {
                   The Capabilities Behind the Model
                 </h2>
                 <div className="space-y-4 text-body-text text-muted-foreground transition-colors duration-300">
-                  <p>A better film investment model only matters if it can be executed in the real world.</p>
-                  <p>Building a successful film investment platform requires more than technology. It requires access to investable projects, experienced commercial judgment, disciplined financial governance, professional production oversight, and the ability to bring films to audiences.</p>
-                  <p>Big Film Fund brings those capabilities together across the full film lifecycle.</p>
+                  <p>
+                    A better film investment model only matters if it can be executed in the real
+                    world.
+                  </p>
+                  <p>
+                    Building a successful film investment platform requires more than technology. It
+                    requires access to investable projects, experienced commercial judgment,
+                    disciplined financial governance, professional production oversight, and the
+                    ability to bring films to audiences.
+                  </p>
+                  <p>
+                    Big Film Fund brings those capabilities together across the full film lifecycle.
+                  </p>
                 </div>
               </div>
 

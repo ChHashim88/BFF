@@ -21,12 +21,8 @@ interface RadialOrbitalTimelineProps {
   timelineData: TimelineItem[];
 }
 
-export default function RadialOrbitalTimelineDark({
-  timelineData,
-}: RadialOrbitalTimelineProps) {
-  const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>(
-    {}
-  );
+export default function RadialOrbitalTimelineDark({ timelineData }: RadialOrbitalTimelineProps) {
+  const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
   const [viewMode, setViewMode] = useState<"orbital">("orbital");
   const [rotationAngle, setRotationAngle] = useState<number>(0);
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
@@ -120,10 +116,7 @@ export default function RadialOrbitalTimelineDark({
     const y = radius * Math.sin(radian) + centerOffset.y;
 
     const zIndex = Math.round(100 + 50 * Math.cos(radian));
-    const opacity = Math.max(
-      0.4,
-      Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2))
-    );
+    const opacity = Math.max(0.4, Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2)));
 
     return { x, y, angle, zIndex, opacity };
   };
@@ -222,22 +215,29 @@ export default function RadialOrbitalTimelineDark({
                     isExpanded
                       ? "bg-white text-black shadow-[0_0_25px_rgba(255,255,255,1)]"
                       : isRelated
-                      ? "bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.8)]"
-                      : "bg-black text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                        ? "bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+                        : "bg-black text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
                   }
                   border-2 
                   ${
                     isExpanded
                       ? "border-white"
                       : isRelated
-                      ? "border-white animate-pulse"
-                      : "border-white"
+                        ? "border-white animate-pulse"
+                        : "border-white"
                   }
                   transition-all duration-300 transform hover:scale-125 hover:shadow-[0_0_20px_rgba(255,255,255,1)]
                   ${isExpanded ? "scale-150" : ""}
                 `}
                 >
-                  <Icon size={20} className={isExpanded || isRelated ? "text-black" : "text-white drop-shadow-[0_0_5px_rgba(255,255,255,1)]"} />
+                  <Icon
+                    size={20}
+                    className={
+                      isExpanded || isRelated
+                        ? "text-black"
+                        : "text-white drop-shadow-[0_0_5px_rgba(255,255,255,1)]"
+                    }
+                  />
                 </div>
 
                 <div
@@ -256,24 +256,16 @@ export default function RadialOrbitalTimelineDark({
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/50"></div>
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-center">
-                        <Badge
-                          className={`px-2 text-xs ${getStatusStyles(
-                            item.status
-                          )}`}
-                        >
+                        <Badge className={`px-2 text-xs ${getStatusStyles(item.status)}`}>
                           {item.status === "completed"
                             ? "COMPLETE"
                             : item.status === "in-progress"
-                            ? "IN PROGRESS"
-                            : "PENDING"}
+                              ? "IN PROGRESS"
+                              : "PENDING"}
                         </Badge>
-                        <span className="text-xs font-mono text-white/50">
-                          {item.date}
-                        </span>
+                        <span className="text-xs font-mono text-white/50">{item.date}</span>
                       </div>
-                      <CardTitle className="text-sm mt-2 text-white">
-                        {item.title}
-                      </CardTitle>
+                      <CardTitle className="text-sm mt-2 text-white">{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="text-xs text-white/80">
                       <p>{item.content}</p>
@@ -304,9 +296,7 @@ export default function RadialOrbitalTimelineDark({
                           </div>
                           <div className="flex flex-wrap gap-1">
                             {item.relatedIds.map((relatedId) => {
-                              const relatedItem = timelineData.find(
-                                (i) => i.id === relatedId
-                              );
+                              const relatedItem = timelineData.find((i) => i.id === relatedId);
                               return (
                                 <Button
                                   key={relatedId}
@@ -319,10 +309,7 @@ export default function RadialOrbitalTimelineDark({
                                   }}
                                 >
                                   {relatedItem?.title}
-                                  <ArrowRight
-                                    size={8}
-                                    className="ml-1 text-white/60"
-                                  />
+                                  <ArrowRight size={8} className="ml-1 text-white/60" />
                                 </Button>
                               );
                             })}

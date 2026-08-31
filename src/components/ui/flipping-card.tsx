@@ -24,8 +24,8 @@ export function FlippingCard({
       onClick={() => setIsFlipped(!isFlipped)}
       style={
         {
-          "--height": typeof height === 'number' ? `${height}px` : height,
-          "--width": typeof width === 'number' ? `${width}px` : width,
+          "--height": typeof height === "number" ? `${height}px` : height,
+          "--width": typeof width === "number" ? `${width}px` : width,
         } as React.CSSProperties
       }
     >
@@ -35,7 +35,7 @@ export function FlippingCard({
           "lg:group-hover/flipping-card:[transform:rotateY(180deg)]",
           isFlipped ? "[transform:rotateY(180deg)]" : "",
           "h-[var(--height)] w-[var(--width)] max-w-full",
-          className
+          className,
         )}
       >
         {/* Front Face */}
@@ -46,9 +46,7 @@ export function FlippingCard({
         </div>
         {/* Back Face */}
         <div className="absolute inset-0 h-full w-full rounded-[inherit] bg-muted/20 text-foreground [transform-style:preserve-3d] [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <div className="[transform:translateZ(70px)_scale(.93)] h-full w-full">
-            {backContent}
-          </div>
+          <div className="[transform:translateZ(70px)_scale(.93)] h-full w-full">{backContent}</div>
         </div>
       </div>
     </div>

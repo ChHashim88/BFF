@@ -10,8 +10,8 @@ const navLinks = [
     dropdown: [
       { label: "Each Film. One Clean Economic Picture", href: "#clean-picture" },
       { label: "No Back of the Line", href: "#no-back" },
-      { label: "Commercial Discipline, Built In", href: "#discipline" }
-    ]
+      { label: "Commercial Discipline, Built In", href: "#discipline" },
+    ],
   },
   { label: "The Platform", href: "#platform" },
   { label: "The Opportunity", href: "#opportunity" },
@@ -36,7 +36,11 @@ export function Navbar() {
       <div className="relative z-10 mx-auto flex h-14 items-center justify-between pl-2 pr-3 lg:pl-2 lg:pr-4">
         <div className="shrink-0">
           <a href="#" className="flex items-center">
-            <img src="/images/1212.png" alt="BFF Logo" className="h-14 w-auto lg:h-16 scale-110 lg:scale-[1.2] origin-left" />
+            <img
+              src="/images/1212.png"
+              alt="BFF Logo"
+              className="h-14 w-auto lg:h-16 scale-110 lg:scale-[1.2] origin-left"
+            />
           </a>
         </div>
 
@@ -47,7 +51,10 @@ export function Navbar() {
               <li key={link.label} className="group relative">
                 {link.dropdown ? (
                   <div className="flex cursor-pointer items-center gap-1 py-4 transition-colors duration-150 hover:text-destructive group-hover:text-destructive">
-                    <a href={link.href} className="block transition-colors duration-150 hover:text-destructive">
+                    <a
+                      href={link.href}
+                      className="block transition-colors duration-150 hover:text-destructive"
+                    >
                       {link.label}
                     </a>
 
@@ -65,7 +72,10 @@ export function Navbar() {
                     </div>
                   </div>
                 ) : (
-                  <a href={link.href} className="block py-4 transition-colors duration-150 hover:text-destructive">
+                  <a
+                    href={link.href}
+                    className="block py-4 transition-colors duration-150 hover:text-destructive"
+                  >
                     {link.label}
                   </a>
                 )}

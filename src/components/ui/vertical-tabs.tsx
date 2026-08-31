@@ -10,25 +10,20 @@ const SERVICES = [
   {
     id: "01",
     title: "Web Design",
-    description:
-      "Creating beautiful, functional, and user-centric digital experiences.",
-    image:
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+    description: "Creating beautiful, functional, and user-centric digital experiences.",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
   },
   {
     id: "02",
     title: "Framer Development",
     description: "Building high-performance, animated websites with Framer.",
-    image:
-      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200",
   },
   {
     id: "03",
     title: "Branding",
-    description:
-      "Defining your brand's visual identity and voice for a lasting impression.",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200",
+    description: "Defining your brand's visual identity and voice for a lasting impression.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200",
   },
 ];
 
@@ -97,7 +92,7 @@ export default function VerticalTabs() {
                       "group relative flex items-start gap-4 py-6 md:py-8 text-left transition-all duration-500 border-t border-border/50 first:border-0",
                       isActive
                         ? "text-foreground"
-                        : "text-muted-foreground/60 hover:text-foreground"
+                        : "text-muted-foreground/60 hover:text-foreground",
                     )}
                   >
                     <div className="absolute left-[-16px] md:left-[-24px] top-0 bottom-0 w-[2px] bg-muted">
@@ -106,9 +101,7 @@ export default function VerticalTabs() {
                           key={`progress-${index}-${isPaused}`}
                           className="absolute top-0 left-0 w-full bg-foreground origin-top"
                           initial={{ height: "0%" }}
-                          animate={
-                            isPaused ? { height: "0%" } : { height: "100%" }
-                          }
+                          animate={isPaused ? { height: "0%" } : { height: "100%" }}
                           transition={{
                             duration: AUTO_PLAY_DURATION / 1000,
                             ease: "linear",
@@ -125,7 +118,7 @@ export default function VerticalTabs() {
                       <span
                         className={cn(
                           "text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight transition-colors duration-500",
-                          isActive ? "text-foreground" : ""
+                          isActive ? "text-foreground" : "",
                         )}
                       >
                         {service.title}

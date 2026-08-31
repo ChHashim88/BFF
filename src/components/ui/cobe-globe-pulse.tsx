@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useCallback } from "react"
-import createGlobe from "cobe"
-import { useTheme } from "../theme-provider"
+import { useEffect, useRef, useCallback } from "react";
+import createGlobe from "cobe";
+import { useTheme } from "../theme-provider";
 
 interface PulseMarker {
-  id: string
-  location: [number, number]
-  delay: number
+  id: string;
+  location: [number, number];
+  delay: number;
 }
 
 interface GlobePulseProps {
-  markers?: PulseMarker[]
-  className?: string
-  speed?: number
+  markers?: PulseMarker[];
+  className?: string;
+  speed?: number;
 }
 
 const defaultMarkers: PulseMarker[] = [
@@ -21,50 +21,86 @@ const defaultMarkers: PulseMarker[] = [
   { id: "pulse-2", location: [40.71, -74.01], delay: 0.5 },
   { id: "pulse-3", location: [35.68, 139.65], delay: 1 },
   { id: "pulse-4", location: [-33.87, 151.21], delay: 1.5 },
-]
+];
 
 // Faint static red network points scattered across the map
 const networkPoints: [number, number][] = [
-  [48.86, 2.35], [52.52, 13.4], [41.9, 12.5], [40.42, -3.7], [55.75, 37.62],
-  [59.33, 18.06], [50.08, 14.44], [37.98, 23.73], [30.04, 31.24], [-1.29, 36.82],
-  [-26.2, 28.04], [6.52, 3.38], [33.57, -7.59], [25.2, 55.27], [24.71, 46.68],
-  [19.08, 72.88], [28.61, 77.21], [13.08, 80.27], [1.35, 103.82], [13.76, 100.5],
-  [-6.2, 106.85], [22.32, 114.17], [31.23, 121.47], [39.9, 116.4], [37.57, 126.98],
-  [34.05, -118.24], [41.88, -87.63], [43.65, -79.38], [19.43, -99.13], [-23.55, -46.63],
-  [-34.6, -58.38], [-12.05, -77.04], [4.71, -74.07], [-33.92, 18.42], [64.14, -21.94],
-  [60.17, 24.94], [45.46, 9.19], [53.35, -6.26], [38.72, -9.14], [35.69, 51.39],
-]
+  [48.86, 2.35],
+  [52.52, 13.4],
+  [41.9, 12.5],
+  [40.42, -3.7],
+  [55.75, 37.62],
+  [59.33, 18.06],
+  [50.08, 14.44],
+  [37.98, 23.73],
+  [30.04, 31.24],
+  [-1.29, 36.82],
+  [-26.2, 28.04],
+  [6.52, 3.38],
+  [33.57, -7.59],
+  [25.2, 55.27],
+  [24.71, 46.68],
+  [19.08, 72.88],
+  [28.61, 77.21],
+  [13.08, 80.27],
+  [1.35, 103.82],
+  [13.76, 100.5],
+  [-6.2, 106.85],
+  [22.32, 114.17],
+  [31.23, 121.47],
+  [39.9, 116.4],
+  [37.57, 126.98],
+  [34.05, -118.24],
+  [41.88, -87.63],
+  [43.65, -79.38],
+  [19.43, -99.13],
+  [-23.55, -46.63],
+  [-34.6, -58.38],
+  [-12.05, -77.04],
+  [4.71, -74.07],
+  [-33.92, 18.42],
+  [64.14, -21.94],
+  [60.17, 24.94],
+  [45.46, 9.19],
+  [53.35, -6.26],
+  [38.72, -9.14],
+  [35.69, 51.39],
+];
 
 export function GlobePulse({
   markers = defaultMarkers,
   className = "",
   speed = 0.003,
 }: GlobePulseProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const pointerInteracting = useRef<{ x: number; y: number } | null>(null)
-  const dragOffset = useRef({ phi: 0, theta: 0 })
-  const phiOffsetRef = useRef(0)
-  const thetaOffsetRef = useRef(0)
-  const isPausedRef = useRef(false)
-  const { theme } = useTheme()
-  const isDark = theme === "dark" || (theme === "system" && typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const pointerInteracting = useRef<{ x: number; y: number } | null>(null);
+  const dragOffset = useRef({ phi: 0, theta: 0 });
+  const phiOffsetRef = useRef(0);
+  const thetaOffsetRef = useRef(0);
+  const isPausedRef = useRef(false);
+  const { theme } = useTheme();
+  const isDark =
+    theme === "dark" ||
+    (theme === "system" &&
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
-    pointerInteracting.current = { x: e.clientX, y: e.clientY }
-    if (canvasRef.current) canvasRef.current.style.cursor = "grabbing"
-    isPausedRef.current = true
-  }, [])
+    pointerInteracting.current = { x: e.clientX, y: e.clientY };
+    if (canvasRef.current) canvasRef.current.style.cursor = "grabbing";
+    isPausedRef.current = true;
+  }, []);
 
   const handlePointerUp = useCallback(() => {
     if (pointerInteracting.current !== null) {
-      phiOffsetRef.current += dragOffset.current.phi
-      thetaOffsetRef.current += dragOffset.current.theta
-      dragOffset.current = { phi: 0, theta: 0 }
+      phiOffsetRef.current += dragOffset.current.phi;
+      thetaOffsetRef.current += dragOffset.current.theta;
+      dragOffset.current = { phi: 0, theta: 0 };
     }
-    pointerInteracting.current = null
-    if (canvasRef.current) canvasRef.current.style.cursor = "grab"
-    isPausedRef.current = false
-  }, [])
+    pointerInteracting.current = null;
+    if (canvasRef.current) canvasRef.current.style.cursor = "grab";
+    isPausedRef.current = false;
+  }, []);
 
   useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {
@@ -72,33 +108,33 @@ export function GlobePulse({
         dragOffset.current = {
           phi: (e.clientX - pointerInteracting.current.x) / 300,
           theta: (e.clientY - pointerInteracting.current.y) / 1000,
-        }
+        };
       }
-    }
-    window.addEventListener("pointermove", handlePointerMove, { passive: true })
-    window.addEventListener("pointerup", handlePointerUp, { passive: true })
+    };
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointerup", handlePointerUp, { passive: true });
     return () => {
-      window.removeEventListener("pointermove", handlePointerMove)
-      window.removeEventListener("pointerup", handlePointerUp)
-    }
-  }, [handlePointerUp])
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
+    };
+  }, [handlePointerUp]);
 
   useEffect(() => {
-    if (!canvasRef.current) return
-    const canvas = canvasRef.current
-    let globe: ReturnType<typeof createGlobe> | null = null
-    let animationId: number
-    let phi = 0
+    if (!canvasRef.current) return;
+    const canvas = canvasRef.current;
+    let globe: ReturnType<typeof createGlobe> | null = null;
+    let animationId: number;
+    let phi = 0;
 
     function init() {
-      const width = canvas.offsetWidth
-      if (width === 0 || globe) return
+      const width = canvas.offsetWidth;
+      if (width === 0 || globe) return;
 
-      let inViewport = true
+      let inViewport = true;
       const io = new IntersectionObserver((entries) => {
-        inViewport = entries[0].isIntersecting
-      })
-      io.observe(canvas)
+        inViewport = entries[0].isIntersecting;
+      });
+      io.observe(canvas);
 
       globe = createGlobe(canvas, {
         devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.25), // Optimized for low-end devices
@@ -129,43 +165,43 @@ export function GlobePulse({
         arcWidth: 0.35,
         arcHeight: 0.3,
         opacity: 0.4, // Reduced opacity to fade the globe overall
-      })
+      });
 
       function animate() {
         if (inViewport) {
-          if (!isPausedRef.current) phi += speed
+          if (!isPausedRef.current) phi += speed;
           globe!.update({
             phi: phi + phiOffsetRef.current + dragOffset.current.phi,
             theta: 0.2 + thetaOffsetRef.current + dragOffset.current.theta,
-          })
+          });
         }
-        animationId = requestAnimationFrame(animate)
+        animationId = requestAnimationFrame(animate);
       }
-      animate()
-      setTimeout(() => canvas && (canvas.style.opacity = "1"))
+      animate();
+      setTimeout(() => canvas && (canvas.style.opacity = "1"));
     }
 
     if (canvas.offsetWidth > 0) {
-      init()
+      init();
     } else {
       const ro = new ResizeObserver((entries) => {
         if ((entries[0]?.contentRect.width ?? 0) > 0) {
-          ro.disconnect()
-          init()
+          ro.disconnect();
+          init();
         }
-      })
-      ro.observe(canvas)
+      });
+      ro.observe(canvas);
     }
 
     return () => {
-      if (animationId) cancelAnimationFrame(animationId)
+      if (animationId) cancelAnimationFrame(animationId);
       if (globe) {
-        globe.destroy()
-        // Cleanup the intersection observer is done via garbage collection, 
+        globe.destroy();
+        // Cleanup the intersection observer is done via garbage collection,
         // but we can be explicit if we stored io.
       }
-    }
-  }, [markers, speed, isDark])
+    };
+  }, [markers, speed, isDark]);
 
   return (
     <div
@@ -191,23 +227,25 @@ export function GlobePulse({
       {markers.map((m) => (
         <div
           key={m.id}
-          style={{
-            position: "absolute",
-            // CSS Anchor Positioning — cobe exposes anchors named --cobe-<id>
-            ["positionAnchor" as never]: `--cobe-${m.id}`,
-            bottom: "anchor(center)",
-            left: "anchor(center)",
-            translate: "-50% 50%",
-            width: 40,
-            height: 40,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            pointerEvents: "none",
-            opacity: `var(--cobe-visible-${m.id}, 0)`,
-            filter: `blur(calc((1 - var(--cobe-visible-${m.id}, 0)) * 8px))`,
-            transition: "opacity 0.4s, filter 0.4s",
-          } as React.CSSProperties}
+          style={
+            {
+              position: "absolute",
+              // CSS Anchor Positioning — cobe exposes anchors named --cobe-<id>
+              ["positionAnchor" as never]: `--cobe-${m.id}`,
+              bottom: "anchor(center)",
+              left: "anchor(center)",
+              translate: "-50% 50%",
+              width: 40,
+              height: 40,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              pointerEvents: "none",
+              opacity: `var(--cobe-visible-${m.id}, 0)`,
+              filter: `blur(calc((1 - var(--cobe-visible-${m.id}, 0)) * 8px))`,
+              transition: "opacity 0.4s, filter 0.4s",
+            } as React.CSSProperties
+          }
         >
           <span
             style={{
@@ -241,5 +279,5 @@ export function GlobePulse({
         </div>
       ))}
     </div>
-  )
+  );
 }

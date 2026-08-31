@@ -20,16 +20,8 @@ type ParticlesProps = {
 };
 
 export const SparklesCore = (props: ParticlesProps) => {
-  const {
-    id,
-    className,
-    background,
-    minSize,
-    maxSize,
-    speed,
-    particleColor,
-    particleDensity,
-  } = props;
+  const { id, className, background, minSize, maxSize, speed, particleColor, particleDensity } =
+    props;
   const [init, setInit] = useState(false);
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -80,6 +72,7 @@ export const SparklesCore = (props: ParticlesProps) => {
                   enable: false,
                   mode: "repulse",
                 },
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 resize: true as any,
               },
               modes: {
@@ -114,9 +107,33 @@ export const SparklesCore = (props: ParticlesProps) => {
               color: {
                 value: particleColor || "#ffffff",
                 animation: {
-                  h: { count: 0, enable: false, speed: 1, decay: 0, delay: 0, sync: true, offset: 0 },
-                  s: { count: 0, enable: false, speed: 1, decay: 0, delay: 0, sync: true, offset: 0 },
-                  l: { count: 0, enable: false, speed: 1, decay: 0, delay: 0, sync: true, offset: 0 },
+                  h: {
+                    count: 0,
+                    enable: false,
+                    speed: 1,
+                    decay: 0,
+                    delay: 0,
+                    sync: true,
+                    offset: 0,
+                  },
+                  s: {
+                    count: 0,
+                    enable: false,
+                    speed: 1,
+                    decay: 0,
+                    delay: 0,
+                    sync: true,
+                    offset: 0,
+                  },
+                  l: {
+                    count: 0,
+                    enable: false,
+                    speed: 1,
+                    decay: 0,
+                    delay: 0,
+                    sync: true,
+                    offset: 0,
+                  },
                 },
               },
               effect: {
@@ -195,13 +212,42 @@ export const SparklesCore = (props: ParticlesProps) => {
                   sizeOffset: true,
                 },
               },
-              roll: { darken: { enable: false, value: 0 }, enable: false, enlighten: { enable: false, value: 0 }, mode: "vertical", speed: 25 },
-              tilt: { value: 0, animation: { enable: false, speed: 0, decay: 0, sync: false }, direction: "clockwise", enable: false },
-              twinkle: { lines: { enable: false, frequency: 0.05, opacity: 1 }, particles: { enable: false, frequency: 0.05, opacity: 1 } },
+              roll: {
+                darken: { enable: false, value: 0 },
+                enable: false,
+                enlighten: { enable: false, value: 0 },
+                mode: "vertical",
+                speed: 25,
+              },
+              tilt: {
+                value: 0,
+                animation: { enable: false, speed: 0, decay: 0, sync: false },
+                direction: "clockwise",
+                enable: false,
+              },
+              twinkle: {
+                lines: { enable: false, frequency: 0.05, opacity: 1 },
+                particles: { enable: false, frequency: 0.05, opacity: 1 },
+              },
               wobble: { distance: 5, enable: false, speed: { angle: 50, move: 10 } },
-              life: { count: 0, delay: { value: 0, sync: false }, duration: { value: 0, sync: false } },
-              rotate: { value: 0, animation: { enable: false, speed: 0, decay: 0, sync: false }, direction: "clockwise", path: false },
-              orbit: { animation: { count: 0, enable: false, speed: 1, decay: 0, delay: 0, sync: false }, enable: false, opacity: 1, rotation: { value: 45 }, width: 1 },
+              life: {
+                count: 0,
+                delay: { value: 0, sync: false },
+                duration: { value: 0, sync: false },
+              },
+              rotate: {
+                value: 0,
+                animation: { enable: false, speed: 0, decay: 0, sync: false },
+                direction: "clockwise",
+                path: false,
+              },
+              orbit: {
+                animation: { count: 0, enable: false, speed: 1, decay: 0, delay: 0, sync: false },
+                enable: false,
+                opacity: 1,
+                rotation: { value: 45 },
+                width: 1,
+              },
               links: {
                 blink: false,
                 color: { value: "#fff" },
