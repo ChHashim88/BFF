@@ -73,7 +73,11 @@ export default function Investment() {
   }, []);
 
   return (
-    <div className="investment-page">
+    <section
+      id="investment"
+      className="relative w-full scroll-mt-24 bg-background py-16 md:py-20 lg:py-24 px-6 md:px-12 xl:px-24 flex flex-col justify-center"
+    >
+      <div className="mx-auto w-full max-w-[1350px] investment-page !p-0">
 
       {/* =====================================================
           NAVIGATION
@@ -127,16 +131,15 @@ export default function Investment() {
         {/* LEFT */}
         <div className="investment-left">
 
-          <div className="eyebrow">
+          <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
             THE INVESTMENT
-          </div>
+          </h3>
 
-          <h1 className="investment-title">
+          <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
             Own Part of the Company
             <br />
-            Building{" "}
-            <span>What Comes Next.</span>
-          </h1>
+            Building <span className="text-destructive">What Comes Next.</span>
+          </h2>
 
 
           <div className="investment-info-list">
@@ -151,10 +154,12 @@ export default function Investment() {
 
 
             <InfoCard
-              icon={<Clapperboard size={24} strokeWidth={1.8} />}
+              icon={<Clapperboard size={24} strokeWidth={1.8} className="text-destructive" />}
               bold
             >
-              You are not investing in a single movie.
+              <span className="text-destructive font-bold">
+                You are not investing in a single movie.
+              </span>
             </InfoCard>
 
 
@@ -596,7 +601,7 @@ export default function Investment() {
         </div>
 
       </section>
-
     </div>
+    </section>
   );
 }

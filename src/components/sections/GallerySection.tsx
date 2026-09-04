@@ -4,7 +4,7 @@ import AccordionGallery from "@/components/ui/AccordionGallery";
 
 export function GallerySection() {
   return (
-    <section className="relative w-full bg-background px-6 py-8 lg:py-12 lg:px-12 xl:px-24 flex flex-col justify-center items-center">
+    <section className="relative w-full bg-background py-16 md:py-20 lg:py-24 px-6 md:px-12 xl:px-24 flex flex-col justify-center items-center">
       <div className="mx-auto w-full max-w-[1350px]">
         <AccordionGallery
           items={[

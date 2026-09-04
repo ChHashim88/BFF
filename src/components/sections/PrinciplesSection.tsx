@@ -7,13 +7,16 @@ export function PrinciplesSection() {
   return (
     <section
       id="model"
-      className="relative w-full scroll-mt-24 bg-background px-6 py-8 lg:py-12 lg:px-12 xl:px-24 flex flex-col justify-center"
+      className="relative w-full scroll-mt-24 bg-background py-16 md:py-20 lg:py-24 px-6 md:px-12 xl:px-24 flex flex-col justify-center"
     >
       <div className="mx-auto w-full max-w-[1350px] flex flex-col items-center text-center space-y-6">
-        <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+        <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
+          THREE CORE PRINCIPLES
+        </h3>
+        <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
           The BFF Model Is Built On
           <br />
-          Three Core Principles
+          <span className="text-destructive">Three Core Principles</span>
         </h2>
         <p className="text-subtitle text-muted-foreground max-w-2xl">
           A simpler, more transparent, more aligned way to invest in film

@@ -4,13 +4,16 @@ import { motion } from "framer-motion";
 
 export default function FUIBentoGridDark() {
   return (
-    <section className="w-full bg-background py-0">
-      <div className="w-full px-4 md:px-8 lg:px-12 xl:px-24 mx-auto max-w-[1350px]">
+    <section className="w-full bg-background pt-16 md:pt-20 lg:pt-24 pb-8">
+      <div className="w-full px-6 md:px-12 xl:px-24 mx-auto max-w-[1350px]">
         <div className="flex flex-col items-center justify-center text-center">
-          <h2 className="tracking-tighter text-balance text-3xl font-medium md:text-4xl lg:text-5xl text-foreground">
+          <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
+            RADICAL TRANSPARENCY
+          </h3>
+          <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
             Radical <span className="text-destructive">Transparency.</span>
           </h2>
-          <p className="max-w-3xl text-lg font-medium tracking-tight mt-4 text-muted-foreground">
+          <p className="text-subtitle text-muted-foreground mt-2">
             Delivered Through the Platform.
           </p>
         </div>

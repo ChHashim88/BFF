@@ -2,14 +2,14 @@ export function ModelSection() {
   return (
     <section
       id="new-model"
-      className="relative w-full scroll-mt-24 bg-background px-6 py-8 lg:py-12 lg:px-12 xl:px-24 flex flex-col justify-center"
+      className="relative w-full scroll-mt-24 bg-background py-16 md:py-20 lg:py-24 px-6 md:px-12 xl:px-24 flex flex-col justify-center"
     >
       <div className="mx-auto w-full max-w-[1350px] flex flex-col space-y-10 lg:space-y-16">
         <div className="w-full text-center lg:text-left">
-          <h3 className="text-h3 text-destructive mb-4 font-bold tracking-tight">
-            The BFF Model
+          <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
+            THE BFF MODEL
           </h3>
-          <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] hover:drop-shadow-md dark:hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.7)] transition-all duration-700 cursor-default">
+          <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
             A New Model For
             <br />
             <span className="text-destructive">Film Investing</span>

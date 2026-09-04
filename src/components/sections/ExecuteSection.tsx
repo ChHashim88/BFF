@@ -6,16 +6,16 @@ export function ExecuteSection() {
   return (
     <section
       id="execute"
-      className="relative w-full scroll-mt-24 px-6 py-8 lg:py-12 lg:px-12 xl:px-24 overflow-hidden flex flex-col justify-center bg-background"
+      className="relative w-full scroll-mt-24 py-16 md:py-20 lg:py-24 px-6 md:px-12 xl:px-24 overflow-hidden flex flex-col justify-center bg-background"
     >
-      <div className="mx-auto w-full max-w-[1350px] mt-6 flex flex-col space-y-10 lg:space-y-16">
+      <div className="mx-auto w-full max-w-[1350px] flex flex-col space-y-10 lg:space-y-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Side - Text */}
           <div className="flex flex-col gap-6 order-2 lg:order-1 mt-8 lg:mt-0 lg:pr-8 xl:pr-16">
-            <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold">
+            <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
               BUILT TO EXECUTE
             </h3>
-            <h2 className="text-h2 text-foreground drop-shadow-sm mt-2">
+            <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
               The Capabilities <span className="text-destructive">Behind the Model</span>
             </h2>
             <div className="space-y-4 text-body-text text-muted-foreground transition-colors duration-300">

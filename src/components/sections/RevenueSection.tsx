@@ -2,17 +2,17 @@ export function RevenueSection() {
   return (
     <section
       id="revenue"
-      className="relative w-full scroll-mt-24 bg-background px-6 py-8 lg:py-12 lg:px-12 xl:px-24 flex flex-col justify-center"
+      className="relative w-full scroll-mt-24 bg-background pt-16 md:pt-20 lg:pt-24 pb-4 px-6 md:px-12 xl:px-24 flex flex-col justify-center"
     >
       <div className="mx-auto w-full max-w-[1350px] flex flex-col space-y-10 lg:space-y-16">
         <div className="w-full text-center lg:text-left">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Left Side - Content */}
             <div className="flex flex-col gap-4 sm:gap-6 lg:pr-8 xl:pr-16 order-2 lg:order-1 mt-8 lg:mt-0 text-left">
-              <h3 className="text-h3 text-destructive mb-2 font-bold tracking-tight uppercase">
-                How We Make Money
+              <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
+                HOW WE MAKE MONEY
               </h3>
-              <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-700 cursor-default">
+              <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
                 Multiple <span className="text-destructive">Revenue Streams.</span>
               </h2>
               <p className="text-body-text text-muted-foreground mt-4">

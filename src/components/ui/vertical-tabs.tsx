@@ -63,8 +63,8 @@ export default function VerticalTabs() {
   };
 
   return (
-    <section className="w-full bg-background pt-4 pb-8 md:pt-8 md:pb-16 lg:pt-12 lg:pb-24">
-      <div className="w-full px-6 lg:px-12 xl:px-24 mx-auto max-w-[1350px]">
+    <section className="w-full bg-background pt-8 pb-16 md:pb-20 lg:pb-24 px-6 md:px-12 xl:px-24">
+      <div className="w-full mx-auto max-w-[1350px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Content */}
           <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 pt-4">

@@ -10,8 +10,8 @@ export function HeroSection() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="relative px-6 pt-20 sm:pt-24 lg:pt-28 pb-8 lg:pb-12 lg:px-12 xl:px-24">
-      <div className="relative z-10 mx-auto grid w-full max-w-[1400px] items-center gap-12 lg:grid-cols-2">
+    <section className="relative w-full pt-32 pb-16 lg:pt-36 lg:pb-24 px-6 md:px-12 xl:px-24 flex items-center justify-center overflow-hidden bg-background">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1350px] items-center gap-12 lg:grid-cols-2">
         <div className="z-10 flex flex-col items-center justify-center space-y-6 text-center max-w-2xl mx-auto lg:mx-0 lg:items-start lg:text-left opacity-100 order-1">
           <h1 className="text-h1 text-foreground">
             Film Investing.

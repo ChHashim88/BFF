@@ -39,7 +39,7 @@
     Arial,
     sans-serif;
 
-  padding: 14px 24px 40px;
+  padding: 0;
 }
 
 /* Dark mode handling (if applicable in project) */
@@ -238,7 +238,7 @@
 ========================================================= */
 
 .investment-hero {
-  width: min(1200px, 100%);
+  width: 100%;
 
   margin: 42px auto 0;
 
@@ -419,6 +419,8 @@
     0 8px 24px rgba(0, 0, 0, 0.06);
 
   min-width: 0;
+
+  align-self: flex-end;
 }
 
 
@@ -658,7 +660,7 @@
 ========================================================= */
 
 .round-section {
-  width: min(1200px, 100%);
+  width: 100%;
 
   margin: 26px auto 0;
 
@@ -868,7 +870,7 @@
 ========================================================= */
 
 .difference-card {
-  width: min(1200px, 100%);
+  width: 100%;
 
   margin: 22px auto 0;
 
@@ -978,7 +980,7 @@
 ========================================================= */
 
 .final-cta {
-  width: min(1200px, 100%);
+  width: 100%;
 
   min-height: 157px;
 

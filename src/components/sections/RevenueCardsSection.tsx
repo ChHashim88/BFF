@@ -4,7 +4,7 @@ import GlassCard from "@/components/ui/glass-card";
 
 export function RevenueCardsSection() {
   return (
-    <section className="relative w-full bg-background px-6 py-8 lg:py-12 lg:px-12 xl:px-24 flex items-center justify-center">
+    <section className="relative w-full bg-background pt-4 pb-16 md:pb-20 lg:pb-24 px-6 md:px-12 xl:px-24 flex items-center justify-center">
       <div className="mx-auto w-full max-w-[1350px]">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           <GlassCard

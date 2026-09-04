@@ -47,17 +47,17 @@ export default function OpportunitySection() {
   return (
     <section
       id="opportunity"
-      className="relative scroll-mt-24 w-full bg-background px-6 py-8 lg:py-12 lg:px-12 xl:px-24 flex justify-center"
+      className="relative scroll-mt-24 w-full bg-background py-16 md:py-20 lg:py-24 px-6 md:px-12 xl:px-24 flex justify-center"
     >
       <div className="mx-auto w-full max-w-[1350px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left Column */}
           <div className="flex flex-col space-y-8">
             <div className="space-y-4">
-              <h3 className="text-h3 text-destructive uppercase tracking-tight block ml-0.5">
+              <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
                 THE OPPORTUNITY
               </h3>
-              <h2 className="text-h2 text-foreground mt-4">
+              <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
                 Film is Ready for <br />
                 <span className="text-destructive">Modern Investment Infrastructure.</span>
               </h2>
