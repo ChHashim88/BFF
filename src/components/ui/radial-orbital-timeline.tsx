@@ -82,24 +82,46 @@ export default function RadialOrbitalTimeline({
     });
   };
 
-  useEffect(() => {
-    let rotationTimer: NodeJS.Timeout;
+  const [isInView, setIsInView] = useState(false);
 
-    if (autoRotate && viewMode === "orbital") {
-      rotationTimer = setInterval(() => {
-        setRotationAngle((prev) => {
-          const newAngle = (prev + 0.3) % 360;
-          return Number(newAngle.toFixed(3));
-        });
-      }, 50);
-    }
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry?.isIntersecting ?? false);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView || !autoRotate || viewMode !== "orbital") return;
+
+    let animationFrameId: number;
+    let lastTime = performance.now();
+
+    const animate = (time: number) => {
+      const deltaTime = time - lastTime;
+      // Cap state update frequency to ~35-40fps for silky smooth visual rotation without React bottleneck
+      if (deltaTime >= 25) {
+        lastTime = time;
+        const speed = 0.006;
+        setRotationAngle((prev) => (prev + speed * deltaTime) % 360);
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
-      if (rotationTimer) {
-        clearInterval(rotationTimer);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [autoRotate, viewMode]);
+  }, [isInView, autoRotate, viewMode]);
 
   const centerViewOnNode = (nodeId: number) => {
     if (viewMode !== "orbital" || !nodeRefs.current[nodeId]) return;
@@ -275,7 +297,7 @@ export default function RadialOrbitalTimeline({
               <div
                 key={item.id}
                 ref={(el) => { nodeRefs.current[item.id] = el; }}
-                className="absolute transition-all duration-700 cursor-pointer"
+                className={`absolute cursor-pointer ${!autoRotate ? "transition-all duration-700" : ""}`}
                 style={nodeStyle}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -283,9 +305,8 @@ export default function RadialOrbitalTimeline({
                 }}
               >
                 <div
-                  className={`absolute rounded-full -inset-1 ${
-                    isPulsing ? "animate-pulse duration-1000" : ""
-                  }`}
+                  className={`absolute rounded-full -inset-1 ${isPulsing ? "animate-pulse duration-1000" : ""
+                    }`}
                   style={{
                     background: `radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)`,
                     width: `${item.energy * 0.5 + 40}px`,
@@ -298,30 +319,27 @@ export default function RadialOrbitalTimeline({
                 <div
                   className={`
                   w-14 h-14 rounded-full flex items-center justify-center
-                  ${
-                    isExpanded
+                  ${isExpanded
                       ? `${c.bg} ${c.textInv}`
                       : isRelated
                         ? `${c.bg20} ${c.text}`
                         : `bg-background ${c.text}`
-                  }
+                    }
                   border-2 
-                  ${
-                    isExpanded
+                  ${isExpanded
                       ? `${c.border} shadow-lg ${c.shadow40}`
                       : isRelated
                         ? `${c.border60} animate-pulse`
                         : `${c.border30}`
-                  }
+                    }
                   transition-all duration-300 transform
                   ${isExpanded ? "scale-125" : `hover:scale-110 ${c.hoverBorder60} ${c.hoverBg10}`}
                 `}
                 >
                   <Icon
                     size={24}
-                    className={`transition-all duration-300 ${
-                      isExpanded ? "opacity-100" : "opacity-80"
-                    }`}
+                    className={`transition-all duration-300 ${isExpanded ? "opacity-100" : "opacity-80"
+                      }`}
                   />
                 </div>
 

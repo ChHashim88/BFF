@@ -75,9 +75,11 @@ export function GlobePulse({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<{ x: number; y: number } | null>(null);
   const dragOffset = useRef({ phi: 0, theta: 0 });
+  const phiRef = useRef(0);
   const phiOffsetRef = useRef(0);
   const thetaOffsetRef = useRef(0);
   const isPausedRef = useRef(false);
+  const inViewportRef = useRef(true);
   const { theme } = useTheme();
   const isDark =
     theme === "dark" ||
@@ -124,29 +126,29 @@ export function GlobePulse({
     const canvas = canvasRef.current;
     let globe: ReturnType<typeof createGlobe> | null = null;
     let animationId: number;
-    let phi = 0;
+    let io: IntersectionObserver | null = null;
+    let ro: ResizeObserver | null = null;
 
     function init() {
       const width = canvas.offsetWidth;
       if (width === 0 || globe) return;
 
-      let inViewport = true;
-      const io = new IntersectionObserver((entries) => {
-        inViewport = entries[0]?.isIntersecting ?? false;
-      });
+      io = new IntersectionObserver(([entry]) => {
+        inViewportRef.current = entry?.isIntersecting ?? true;
+      }, { threshold: 0.05 });
       io.observe(canvas);
 
       globe = createGlobe(canvas, {
-        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.25), // Optimized for low-end devices
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.25),
         width,
         height: width,
-        phi: 0,
+        phi: phiRef.current,
         theta: 0.2,
         dark: isDark ? 1 : 0,
         diffuse: isDark ? 1.2 : 0.6,
-        mapSamples: 22000,
+        mapSamples: 12000,
         mapBrightness: isDark ? 6 : 11,
-        baseColor: isDark ? [1, 1, 1] : [0.98, 0.98, 0.99], // Lighter base color to fade the map lines
+        baseColor: isDark ? [1, 1, 1] : [0.98, 0.98, 0.99],
         markerColor: [0.9, 0.18, 0.2],
         glowColor: isDark ? [0, 0, 0] : [1, 1, 1],
         markerElevation: 0,
@@ -164,29 +166,32 @@ export function GlobePulse({
         arcColor: [0.9, 0.25, 0.25],
         arcWidth: 0.35,
         arcHeight: 0.3,
-        opacity: 0.4, // Reduced opacity to fade the globe overall
+        opacity: 0.9,
       });
 
+      canvas.style.opacity = "1";
+
       function animate() {
-        if (inViewport) {
-          if (!isPausedRef.current) phi += speed;
-          globe!.update({
-            phi: phi + phiOffsetRef.current + dragOffset.current.phi,
+        if (inViewportRef.current && globe) {
+          if (!isPausedRef.current) {
+            phiRef.current += speed;
+          }
+          globe.update({
+            phi: phiRef.current + phiOffsetRef.current + dragOffset.current.phi,
             theta: 0.2 + thetaOffsetRef.current + dragOffset.current.theta,
           });
         }
         animationId = requestAnimationFrame(animate);
       }
-      animate();
-      setTimeout(() => canvas && (canvas.style.opacity = "1"));
+      animationId = requestAnimationFrame(animate);
     }
 
     if (canvas.offsetWidth > 0) {
       init();
     } else {
-      const ro = new ResizeObserver((entries) => {
+      ro = new ResizeObserver((entries) => {
         if ((entries[0]?.contentRect.width ?? 0) > 0) {
-          ro.disconnect();
+          ro?.disconnect();
           init();
         }
       });
@@ -195,10 +200,11 @@ export function GlobePulse({
 
     return () => {
       if (animationId) cancelAnimationFrame(animationId);
+      if (io) io.disconnect();
+      if (ro) ro.disconnect();
       if (globe) {
         globe.destroy();
-        // Cleanup the intersection observer is done via garbage collection,
-        // but we can be explicit if we stored io.
+        globe = null;
       }
     };
   }, [markers, speed, isDark]);
@@ -217,11 +223,10 @@ export function GlobePulse({
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
-        className="h-full w-full opacity-0 transition-opacity duration-500"
+        className="h-full w-full opacity-100 transition-opacity duration-500"
         style={{
           cursor: "grab",
           contain: "layout paint size",
-          // Removed expensive drop-shadow filter for low-end device optimization
         }}
       />
       {markers.map((m) => (

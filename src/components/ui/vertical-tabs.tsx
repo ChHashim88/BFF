@@ -75,6 +75,7 @@ export default function VerticalTabs() {
                   <button
                     key={service.id}
                     onClick={() => handleTabClick(index)}
+                    onMouseEnter={() => handleTabClick(index)}
                     className={cn(
                       "group relative flex items-start gap-4 py-6 md:py-8 text-left transition-all duration-500 border-t border-border/50 first:border-0",
                       isActive
@@ -88,7 +89,12 @@ export default function VerticalTabs() {
                       )}
                     </div>
 
-                    <span className="text-[9px] md:text-[10px] font-medium mt-1 tabular-nums opacity-50">
+                    <span
+                      className={cn(
+                        "text-[9px] md:text-[10px] font-medium mt-1 tabular-nums transition-colors duration-300",
+                        isActive ? "text-destructive font-bold opacity-100" : "opacity-50"
+                      )}
+                    >
                       /{service.id}
                     </span>
 

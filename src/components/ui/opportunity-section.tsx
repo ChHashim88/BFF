@@ -1,22 +1,63 @@
-import React from "react";
-import { Globe, Share2, Target, Clapperboard, Star, TrendingUp } from "lucide-react";
+"use client";
+
+import React, { useState } from "react";
+import { Globe, Share2, Target, Clapperboard, Star, TrendingUp, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+function ExpandablePoint({
+  icon: Icon,
+  shortText,
+  fullText,
+  isBordered = true,
+}: {
+  icon: React.ElementType;
+  shortText: string;
+  fullText: string;
+  isBordered?: boolean;
+}) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className={cn("flex gap-5 items-start pb-5", isBordered && "border-b border-border/50")}>
+      <div className="w-10 h-10 rounded-full border border-destructive/20 bg-destructive/5 flex items-center justify-center shrink-0 mt-0.5">
+        <Icon className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
+      </div>
+      <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-1">
+        {isExpanded ? fullText : shortText}{" "}
+        <button
+          type="button"
+          onClick={() => setIsExpanded(!isExpanded)}
+          title={isExpanded ? "Show Less" : "Show More"}
+          aria-label={isExpanded ? "Show Less" : "Show More"}
+          className="inline-flex items-center justify-center h-6 w-6 rounded-full text-destructive hover:bg-destructive/15 transition-all cursor-pointer ml-1 align-middle border border-destructive/30"
+        >
+          <ChevronDown
+            size={14}
+            className={`transition-transform duration-300 ${
+              isExpanded ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+      </p>
+    </div>
+  );
+}
 
 export default function OpportunitySection() {
   return (
     <section
       id="opportunity"
-      className="relative scroll-mt-24 w-full bg-background px-6 py-16 lg:py-24 lg:px-12 xl:px-24 flex justify-center"
+      className="relative scroll-mt-24 w-full bg-background px-6 py-8 lg:py-12 lg:px-12 xl:px-24 flex justify-center"
     >
       <div className="mx-auto w-full max-w-[1350px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left Column */}
           <div className="flex flex-col space-y-8">
             <div className="space-y-4">
-              <h3 className="text-[10px] font-medium text-destructive uppercase tracking-[0.3em] block ml-0.5">
+              <h3 className="text-h3 text-destructive uppercase tracking-tight block ml-0.5">
                 THE OPPORTUNITY
               </h3>
-              <h2 className="tracking-tighter text-balance text-3xl font-medium md:text-4xl lg:text-5xl text-foreground mt-4">
+              <h2 className="text-h2 text-foreground mt-4">
                 Film is Ready for <br />
                 <span className="text-destructive">Modern Investment Infrastructure.</span>
               </h2>
@@ -35,28 +76,18 @@ export default function OpportunitySection() {
               </div>
 
               {/* Point 2 */}
-              <div className="flex gap-5 items-start pb-5 border-b border-border/50">
-                <div className="w-10 h-10 rounded-full border border-destructive/20 bg-destructive/5 flex items-center justify-center shrink-0 mt-0.5">
-                  <Share2 className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
-                </div>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-1">
-                  Yet film investing remains largely fragmented: built around private networks,
-                  one-off deals, inconsistent structures, and investor experiences that begin and
-                  end with each individual project.
-                </p>
-              </div>
+              <ExpandablePoint
+                icon={Share2}
+                shortText="Yet film investing remains largely fragmented: built around private networks, one-off deals..."
+                fullText="Yet film investing remains largely fragmented: built around private networks, one-off deals, inconsistent structures, and investor experiences that begin and end with each individual project."
+              />
 
               {/* Point 3 */}
-              <div className="flex gap-5 items-start pb-5 border-b border-border/50">
-                <div className="w-10 h-10 rounded-full border border-destructive/20 bg-destructive/5 flex items-center justify-center shrink-0 mt-0.5">
-                  <Target className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
-                </div>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-1">
-                  The opportunity is not simply to give more people access to film investments. It
-                  is to transform how those opportunities are sourced, evaluated, structured,
-                  financed, brought to market, and experienced by investors.
-                </p>
-              </div>
+              <ExpandablePoint
+                icon={Target}
+                shortText="The opportunity is not simply to give more people access to film investments. It is to transform how..."
+                fullText="The opportunity is not simply to give more people access to film investments. It is to transform how those opportunities are sourced, evaluated, structured, financed, brought to market, and experienced by investors."
+              />
 
               {/* Point 4 */}
               <div className="flex gap-5 items-start pb-5 border-b border-border/50">
@@ -64,7 +95,7 @@ export default function OpportunitySection() {
                   <Clapperboard className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
                 </div>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-1">
-                  <span className="font-bold text-foreground">Big Film Fund</span> is building the
+                  <span className="font-bold text-destructive">Big Film Fund</span> is building the
                   model and platform to make that transformation possible.
                 </p>
               </div>
@@ -74,7 +105,7 @@ export default function OpportunitySection() {
                 <div className="w-10 h-10 rounded-full border border-destructive/20 bg-destructive/5 flex items-center justify-center shrink-0 mt-0.5">
                   <Star className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
                 </div>
-                <p className="text-sm md:text-base text-foreground font-bold leading-relaxed pt-1">
+                <p className="text-sm md:text-base text-destructive font-bold leading-relaxed pt-1">
                   Film is ready for that transformation.
                 </p>
               </div>
@@ -82,38 +113,24 @@ export default function OpportunitySection() {
           </div>
 
           {/* Right Column */}
-          <div className="flex flex-col gap-6 w-full h-full lg:pl-6 lg:mt-24">
-            {/* Video Placeholder Container */}
-            <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-black shadow-2xl group cursor-pointer border border-border/50">
-              <img
-                src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=1400"
-                alt="Film Set"
-                className="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105"
-              />
+          <div className="flex flex-col gap-8 w-full h-full lg:pl-6 my-auto justify-center">
+            {/* Stacked Video Player */}
+            <div className="relative w-full aspect-[4/3] sm:aspect-video lg:aspect-[4/3] xl:aspect-[16/10] lg:ml-4 sm:ml-8">
+              {/* Back layers for stack effect */}
+              <div className="absolute inset-y-6 -left-6 w-full bg-zinc-200 dark:bg-zinc-900 border border-border/40 shadow-2xl z-0 hidden sm:block" />
+              <div className="absolute inset-y-3 -left-3 w-full bg-zinc-300 dark:bg-zinc-900 border border-border/50 shadow-2xl z-10 hidden sm:block" />
 
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
-                  <div className="w-0 h-0 border-y-[10px] border-y-transparent border-l-[16px] border-l-destructive ml-1"></div>
-                </div>
-              </div>
-
-              {/* Fake Video Controls */}
-              <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 pb-4 z-10">
-                <div className="w-full flex items-center gap-4">
-                  <div className="w-0 h-0 border-y-[5px] border-y-transparent border-l-[8px] border-l-white"></div>
-                  <span className="text-white text-xs font-medium">0:00 / 1:30</span>
-                  <div className="flex-1 h-1 bg-white/30 rounded-full relative overflow-hidden">
-                    <div className="absolute top-0 left-0 bottom-0 w-1/4 bg-destructive rounded-full"></div>
-                  </div>
-                  <div className="w-4 h-4 bg-white/80 rounded-[2px]"></div>{" "}
-                  {/* Fake volume/fullscreen icon */}
-                </div>
+              {/* Main Video frame */}
+              <div className="absolute inset-0 w-full h-full bg-zinc-100 dark:bg-zinc-950 border border-border shadow-2xl overflow-hidden z-20 flex items-center justify-center group transition-transform duration-500 hover:-translate-y-2 hover:translate-x-2">
+                <div className="absolute inset-0 bg-black/10 dark:bg-black/40 group-hover:bg-black/5 dark:group-hover:bg-black/10 transition-colors duration-500 z-10" />
+                <span className="text-2xl sm:text-4xl font-black tracking-[0.2em] text-foreground/40 dark:text-white/30 uppercase z-20 transition-transform duration-500 group-hover:scale-105">
+                  Video Player
+                </span>
               </div>
             </div>
 
             {/* Dark Liquid Glass Container */}
-            <div className="relative w-full rounded-3xl bg-zinc-950 border border-white/10 p-8 md:p-10 shadow-2xl overflow-hidden">
+            <div className="relative w-full rounded-3xl bg-zinc-950 border border-white/10 p-8 md:p-10 shadow-2xl overflow-hidden lg:ml-4 sm:ml-8">
               {/* Subtle glass reflection effect */}
               <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-destructive/20 blur-[80px] rounded-full pointer-events-none" />

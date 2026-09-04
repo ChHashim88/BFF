@@ -40,15 +40,17 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
     const innerContent = (
       <>
         {/* Background Image with Parallax Zoom */}
-        <div
-          className="absolute inset-0 bg-cover bg-center 
-                     transition-transform duration-700 ease-in-out group-hover:scale-110"
-          style={{ backgroundImage: `url(${imageUrl})` }}
+        <img
+          src={imageUrl}
+          alt={location}
+          loading="eager"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 pointer-events-none"
         />
 
         {/* Themed Gradient Overlay - Reduced since we now use a glass container */}
         <div
-          className="absolute inset-0 transition-opacity duration-500"
+          className="absolute inset-0 transition-opacity duration-300"
           style={{
             background: `linear-gradient(to top, hsl(var(--theme-color) / 0.7), transparent 100%)`,
           }}
@@ -59,7 +61,7 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
           {/* Glass Container Wrapper */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative flex flex-col max-h-full col-start-1 row-start-1 w-full rounded-3xl overflow-y-auto overflow-x-hidden shadow-2xl border border-white/20 transition-all duration-500 bg-black/20 backdrop-blur-xl group-hover:border-white/30 p-6 sm:p-8 custom-scrollbar"
+            className="relative flex flex-col max-h-full col-start-1 row-start-1 w-full rounded-3xl overflow-y-auto overflow-x-hidden shadow-2xl border border-white/20 transition-all duration-300 transform-gpu bg-zinc-950/40 backdrop-blur-md group-hover:border-white/30 p-6 sm:p-8 custom-scrollbar"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
 
@@ -80,7 +82,7 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
               )}
 
               {description && (
-                <div className="text-nav text-white/90 mt-2 space-y-3">{description}</div>
+                <div className="text-body-text text-white/95 mt-3 space-y-4">{description}</div>
               )}
 
               <div className="mt-8 flex justify-end">
@@ -112,7 +114,7 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
                 <h3 className="text-subtitle min-h-[56px] mb-4 drop-shadow-md">
                   {readMoreContent.title}
                 </h3>
-                <div className="text-nav text-white/95 mt-2 space-y-4">
+                <div className="text-body-text text-white/95 mt-3 space-y-4">
                   {readMoreContent.description}
                 </div>
 

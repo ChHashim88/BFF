@@ -1,11 +1,14 @@
+"use client";
+
 import { ChevronDown } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { openWaitlistModal } from "@/components/ui/WaitlistModal";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "The Problem", href: "#problem" },
+  { label: "Solution", href: "#problem" },
   {
-    label: "The BFF Model",
+    label: "BFF Model",
     href: "#new-model",
     dropdown: [
       { label: "Each Film. One Clean Economic Picture", href: "#clean-picture" },
@@ -13,14 +16,14 @@ const navLinks = [
       { label: "Commercial Discipline, Built In", href: "#discipline" },
     ],
   },
-  { label: "The Platform", href: "#platform" },
-  { label: "The Opportunity", href: "#opportunity" },
+  { label: "Platform", href: "#platform" },
+  { label: "Opportunity", href: "#opportunity" },
   { label: "How We Make Money", href: "#revenue" },
   { label: "Built to Execute", href: "#execute" },
-  { label: "Progress to Date", href: "#progress" },
+  { label: "Founders Club", href: "#founders-club" },
+  { label: "Progress to Date", href: "#progress-to-date" },
   { label: "What Comes Next", href: "#next" },
-  { label: "The Investment", href: "#investment" },
-  { label: "Why Now?", href: "#whynow" },
+  { label: "Investment", href: "#investment" },
 ];
 
 export function Navbar() {
@@ -46,7 +49,7 @@ export function Navbar() {
 
         {/* Links */}
         <nav className="hidden lg:flex flex-1 items-center justify-center overflow-visible mx-2">
-          <ul className="flex items-center justify-center gap-1 xl:gap-1.5 2xl:gap-4 whitespace-nowrap px-1 text-[8px] lg:text-[8.5px] xl:text-[10px] 2xl:text-xs text-foreground/85 transition-all duration-300">
+          <ul className="flex items-center justify-center gap-1.5 xl:gap-2.5 2xl:gap-4 whitespace-nowrap px-1 text-[12px] font-normal leading-[1.20] text-foreground/85 transition-all duration-300">
             {navLinks.map((link) => (
               <li key={link.label} className="group relative">
                 {link.dropdown ? (
@@ -87,7 +90,10 @@ export function Navbar() {
         {/* CTA */}
         <div className="shrink-0 flex items-center gap-2">
           <ThemeToggle />
-          <button className="cursor-pointer rounded-full bg-destructive px-3 py-1.5 lg:px-4 lg:py-1.5 text-[9px] lg:text-xs font-semibold text-destructive-foreground shadow-sm transition-all duration-200 hover:scale-105 hover:bg-destructive/95 hover:shadow-md hover:shadow-destructive/25 active:scale-95 whitespace-nowrap">
+          <button 
+            onClick={() => openWaitlistModal("waitlist")}
+            className="cursor-pointer rounded-full bg-destructive px-3 py-1.5 lg:px-4 lg:py-1.5 text-[9px] lg:text-xs font-semibold text-destructive-foreground shadow-sm transition-all duration-200 hover:scale-105 hover:bg-destructive/95 hover:shadow-md hover:shadow-destructive/25 active:scale-95 whitespace-nowrap"
+          >
             Join Waitlist
           </button>
         </div>

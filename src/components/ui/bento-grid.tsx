@@ -8,7 +8,7 @@ export default function FUIBentoGridDark() {
       <div className="w-full px-4 md:px-8 lg:px-12 xl:px-24 mx-auto max-w-[1350px]">
         <div className="flex flex-col items-center justify-center text-center">
           <h2 className="tracking-tighter text-balance text-3xl font-medium md:text-4xl lg:text-5xl text-foreground">
-            Radical Transparency.
+            Radical <span className="text-destructive">Transparency.</span>
           </h2>
           <p className="max-w-3xl text-lg font-medium tracking-tight mt-4 text-muted-foreground">
             Delivered Through the Platform.
