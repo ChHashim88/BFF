@@ -1,30 +1,35 @@
 "use client";
 
 import GlassCard from "@/components/ui/glass-card";
+import { Film, Cpu, TrendingUp, Sparkles } from "lucide-react";
 
 export function RevenueCardsSection() {
   return (
     <section className="relative w-full bg-background pt-4 pb-16 md:pb-20 lg:pb-24 px-6 md:px-12 xl:px-24 flex items-center justify-center">
       <div className="mx-auto w-full max-w-[1350px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch">
           <GlassCard
+            icon={Film}
+            delay={0.1}
             title="Platform Fees"
-            titleClassName="text-destructive"
             description="Fees associated with bringing film offerings to market and supporting them through the BFF platform."
           />
           <GlassCard
+            icon={Cpu}
+            delay={0.2}
             title="Project Participation"
-            titleClassName="text-destructive"
             description="Revenue and defined economic participation associated with BFF’s role in financing, developing, and producing individual films."
           />
           <GlassCard
+            icon={TrendingUp}
+            delay={0.3}
             title="Performance Upside"
-            titleClassName="text-destructive"
             description="BFF participates in distributable revenue from successful films—aligning the company’s financial upside with performance."
           />
           <GlassCard
+            icon={Sparkles}
+            delay={0.4}
             title="Partnerships"
-            titleClassName="text-destructive"
             description="Revenue associated with distribution, licensing, content partnerships, and other commercial relationships."
           />
         </div>

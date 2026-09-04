@@ -1,6 +1,7 @@
 "use client";
 
 import GlassCard from "@/components/ui/glass-card";
+import { Search, CheckCircle2, Clapperboard, Globe, ShieldCheck } from "lucide-react";
 
 export function ExecuteSection() {
   return (
@@ -54,28 +55,33 @@ export function ExecuteSection() {
         {/* 5 Execution Glass Cards */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-center items-stretch pt-4 pb-2">
           <GlassCard
+            icon={Search}
+            delay={0.1}
             title="Project Access"
-            titleClassName="text-destructive"
             description="A growing pipeline sourced through filmmakers, producers, representatives, and development relationships."
           />
           <GlassCard
+            icon={CheckCircle2}
+            delay={0.2}
             title="Disciplined Greenlight"
-            titleClassName="text-destructive"
             description="A rigorous evaluation methodology testing creative strength, audience thesis, commercial potential, and risk."
           />
           <GlassCard
+            icon={Clapperboard}
+            delay={0.3}
             title="Production Execution"
-            titleClassName="text-destructive"
             description="Experienced producers, defined budgets, clear agreements, accountable milestones, and professional oversight."
           />
           <GlassCard
+            icon={Globe}
+            delay={0.4}
             title="Distribution"
-            titleClassName="text-destructive"
             description="Global distribution experience and commercial relationships that inform positioning to reach audiences."
           />
           <GlassCard
+            icon={ShieldCheck}
+            delay={0.5}
             title="Platform Oversight"
-            titleClassName="text-destructive"
             description="Standalone structures, disciplined capital management, consistent reporting, and ongoing visibility."
           />
         </div>
