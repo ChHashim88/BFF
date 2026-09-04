@@ -1,31 +1,39 @@
-# Welcome to your Lovable project
+# Big Film Fund — Film Investing. Reimagined.
 
-This project was built with [Lovable](https://lovable.dev).
+Big Film Fund (BFF) brings the film investment experience together in one place — connecting investors, filmmakers, and audiences through a modern, transparent technology platform.
 
-## Build with Lovable
+## Features
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- **Liquid Glass UI System**: Modern 3D aesthetic, dynamic theme switching (Dark/Light mode), and floating navigation.
+- **Curated Film Discovery**: Standalone project structures with clean, un-cross-collateralized economic modeling.
+- **Interactive Disclosures**: Inline text disclosures and expandable section insights.
+- **Priority Access Modal**: Built-in access request workflows for Waitlist & Founders Club membership.
+- **Sticky Footer CTA**: Persistent, non-intrusive bottom conversion bar.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Getting Started
 
-## Development
+### Prerequisites
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Ensure you have [Node.js](https://nodejs.org/) (v18+) installed.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+### Installation
 
-## Built with
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+2. Start the local development server:
+   ```bash
+   npm run dev
+   ```
 
-# GLOBE-3D
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Built With
+
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS & CSS Variables
+- **Animations**: Framer Motion
+- **Icons**: Lucide React & Hugeicons
