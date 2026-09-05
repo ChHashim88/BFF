@@ -184,14 +184,14 @@
   }
 
   .text-h3 {
-    font-size: 28px;
+    font-size: 21px;
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: -0.01em;
   }
   @media (min-width: 1024px) {
     .text-h3 {
-      font-size: 32px;
+      font-size: 21px;
     }
   }
 
@@ -225,7 +225,7 @@
   }
 
   .text-label {
-    font-size: 12px;
+    font-size: 21px;
     font-weight: 500;
     line-height: normal;
     letter-spacing: 0.02em;

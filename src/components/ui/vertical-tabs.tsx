@@ -9,21 +9,21 @@ import { HugeiconsIcon } from "@hugeicons/react";
 const SERVICES = [
   {
     id: "01",
-    title: "Web Design",
-    description: "Creating beautiful, functional, and user-centric digital experiences.",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+    title: "Visibility",
+    description: "BFF's structure makes a clean financial picture possible. The platform makes it visible.",
+    image: "/RT1.jpeg",
   },
   {
     id: "02",
-    title: "Framer Development",
-    description: "Building high-performance, animated websites with Framer.",
-    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200",
+    title: "Independence",
+    description: "Because every film has its own entity, capitalization, accounting, revenue, and distributions, investors can follow each project as an individual investment while viewing their film holdings together in one place.",
+    image: "/RT2.jpeg",
   },
   {
     id: "03",
-    title: "Branding",
-    description: "Defining your brand's visual identity and voice for a lasting impression.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200",
+    title: "Dashboard",
+    description: "The BFF dashboard is designed to provide ongoing visibility into project progress, financial reporting, revenue activity, and distributions-without forcing investors to navigate disconnected entities, reports, and intermediaries.",
+    image: "/RT3.jpeg",
   },
 ];
 

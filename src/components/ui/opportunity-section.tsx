@@ -19,7 +19,7 @@ function ExpandablePoint({
 
   return (
     <div className={cn("flex gap-5 items-start pb-5", isBordered && "border-b border-border/50")}>
-      <div className="w-10 h-10 rounded-full border border-destructive/20 bg-destructive/5 flex items-center justify-center shrink-0 mt-0.5">
+      <div className="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center shrink-0 mt-0.5">
         <Icon className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
       </div>
       <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-1">
@@ -29,7 +29,7 @@ function ExpandablePoint({
           onClick={() => setIsExpanded(!isExpanded)}
           title={isExpanded ? "Show Less" : "Show More"}
           aria-label={isExpanded ? "Show Less" : "Show More"}
-          className="inline-flex items-center justify-center h-6 w-6 rounded-full text-destructive hover:bg-destructive/15 transition-all cursor-pointer ml-1 align-middle border border-destructive/30"
+          className="inline-flex items-center justify-center h-6 w-6 rounded-full text-destructive hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer ml-1 align-middle border border-border"
         >
           <ChevronDown
             size={14}
@@ -66,7 +66,7 @@ export default function OpportunitySection() {
             <div className="flex flex-col space-y-6 pt-6">
               {/* Point 1 */}
               <div className="flex gap-5 items-start pb-5 border-b border-border/50">
-                <div className="w-10 h-10 rounded-full border border-destructive/20 bg-destructive/5 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center shrink-0 mt-0.5">
                   <Globe className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
                 </div>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-1">
@@ -91,7 +91,7 @@ export default function OpportunitySection() {
 
               {/* Point 4 */}
               <div className="flex gap-5 items-start pb-5 border-b border-border/50">
-                <div className="w-10 h-10 rounded-full border border-destructive/20 bg-destructive/5 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center shrink-0 mt-0.5">
                   <Clapperboard className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
                 </div>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-1">
@@ -102,7 +102,7 @@ export default function OpportunitySection() {
 
               {/* Point 5 */}
               <div className="flex gap-5 items-start">
-                <div className="w-10 h-10 rounded-full border border-destructive/20 bg-destructive/5 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center shrink-0 mt-0.5">
                   <Star className="w-[18px] h-[18px] text-destructive" strokeWidth={2.5} />
                 </div>
                 <p className="text-sm md:text-base text-destructive font-bold leading-relaxed pt-1">
@@ -132,11 +132,8 @@ export default function OpportunitySection() {
             {/* Dark Liquid Glass Container */}
             <div className="relative w-full rounded-3xl bg-zinc-950 border border-white/10 p-8 md:p-10 shadow-2xl overflow-hidden lg:ml-4 sm:ml-8">
               {/* Subtle glass reflection effect */}
-              <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
-              <div className="absolute -top-24 -right-24 w-48 h-48 bg-destructive/20 blur-[80px] rounded-full pointer-events-none" />
-
               <div className="relative z-10 flex flex-col sm:flex-row gap-6 sm:items-start">
-                <div className="w-14 h-14 shrink-0 rounded-xl border border-destructive/30 bg-destructive/10 flex items-center justify-center">
+                <div className="w-14 h-14 shrink-0 rounded-xl border border-white/20 bg-white/10 flex items-center justify-center">
                   <TrendingUp className="w-7 h-7 text-white" />
                 </div>
 

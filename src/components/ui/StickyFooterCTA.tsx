@@ -62,7 +62,7 @@ export function StickyFooterCTA() {
 
               <button
                 onClick={() => openWaitlistModal("waitlist")}
-                className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-destructive-foreground bg-destructive hover:bg-destructive/90 px-4 py-1.5 rounded-full shadow-md shadow-destructive/20 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap uppercase tracking-wider"
+                className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-destructive-foreground bg-destructive hover:bg-destructive/90 px-4 py-1.5 rounded-full shadow-md transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap uppercase tracking-wider"
               >
                 Join Waitlist
                 <ArrowRight size={13} />

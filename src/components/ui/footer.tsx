@@ -54,7 +54,7 @@ const navigation = {
           items: [
             { name: "Home", href: "/" },
             { name: "Why BFF", href: "#why-bff" },
-            { name: "The Problem", href: "#problem" },
+            { name: "The Solution", href: "#problem" },
             { name: "Our Solution", href: "#solution" },
             { name: "The Platform", href: "#platform" },
           ],
@@ -90,7 +90,7 @@ export default function Footer() {
       <div className="relative mx-auto grid max-w-7xl items-center justify-center gap-6 p-10 pb-0 md:flex">
         <a href="/">
           <p className="flex items-center justify-center rounded-full">
-            <span className="font-black text-xl tracking-tighter text-[#CD0007]">BFF</span>
+            <span className="font-black text-xl tracking-tighter text-[#C00000]">BFF</span>
           </p>
         </a>
         <p className="bg-transparent text-center text-xs leading-4 text-primary/60 md:text-left">

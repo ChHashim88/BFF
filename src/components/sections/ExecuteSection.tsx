@@ -55,30 +55,35 @@ export function ExecuteSection() {
         {/* 5 Execution Glass Cards */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-center items-stretch pt-4 pb-2">
           <GlassCard
+            flipOnHover
             icon={Search}
             delay={0.1}
             title="Project Access"
             description="A growing pipeline sourced through filmmakers, producers, representatives, and development relationships."
           />
           <GlassCard
+            flipOnHover
             icon={CheckCircle2}
             delay={0.2}
             title="Disciplined Greenlight"
             description="A rigorous evaluation methodology testing creative strength, audience thesis, commercial potential, and risk."
           />
           <GlassCard
+            flipOnHover
             icon={Clapperboard}
             delay={0.3}
             title="Production Execution"
             description="Experienced producers, defined budgets, clear agreements, accountable milestones, and professional oversight."
           />
           <GlassCard
+            flipOnHover
             icon={Globe}
             delay={0.4}
             title="Distribution"
             description="Global distribution experience and commercial relationships that inform positioning to reach audiences."
           />
           <GlassCard
+            flipOnHover
             icon={ShieldCheck}
             delay={0.5}
             title="Platform Oversight"

@@ -34,7 +34,7 @@ export function FoundersClubSection() {
               </div>
               <button
                 onClick={() => openWaitlistModal("founders")}
-                className="mt-6 px-8 py-4 bg-[#CD0007] text-white font-bold tracking-wide uppercase rounded hover:bg-[#a80005] transition-colors w-fit shadow-lg shadow-red-500/20 active:scale-95 cursor-pointer"
+                className="mt-6 px-8 py-4 bg-[#C00000] text-white font-bold tracking-wide uppercase rounded-full hover:bg-[#990000] transition-all duration-300 hover:scale-105 shadow-lg active:scale-95 cursor-pointer"
               >
                 Join Founders Club
               </button>

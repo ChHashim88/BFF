@@ -84,14 +84,18 @@ export function TimelineSection() {
     <section className="relative w-full bg-background py-16 md:py-20 lg:py-24 px-6 md:px-12 xl:px-24 flex justify-center overflow-hidden">
       <div className="mx-auto w-full max-w-[1350px] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* Left side text */}
-        <div className="flex flex-col space-y-6 lg:pr-8 z-10 text-foreground order-2 lg:order-1">
-          <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
-            FILM IS NEXT
-          </h3>
-          <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
-            Building the System for <span className="text-destructive">Modern Film Investing</span>
-          </h2>
-          <div className="space-y-5 text-sm text-muted-foreground leading-relaxed font-medium">
+        <div className="flex flex-col gap-6 lg:pr-8 xl:pr-16 z-10 text-foreground order-2 lg:order-1 text-left">
+          <div>
+            <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
+              FILM IS NEXT
+            </h3>
+            <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
+              Building the System for <br />
+              <span className="text-destructive">Modern Film Investing</span>
+            </h2>
+          </div>
+
+          <div className="space-y-4 text-body-text text-muted-foreground transition-colors duration-300">
             <p>
               Bringing film investing into the modern era requires more than
               putting traditional film deals online. It requires
@@ -99,7 +103,9 @@ export function TimelineSection() {
               repeatable project pipeline, and a platform that brings the entire
               investment experience together.
             </p>
-            <p>That is the system BFF is building.</p>
+            <p className="font-semibold text-destructive">
+              That is the system BFF is building.
+            </p>
           </div>
         </div>
 

@@ -95,10 +95,6 @@ export function WaitlistModal() {
             transition={{ type: "spring", duration: 0.5, bounce: 0.1 }}
             className="relative w-full max-w-lg bg-zinc-950/95 border border-white/10 dark:border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl z-50 overflow-hidden text-foreground my-8"
           >
-            {/* Glowing Accent Orbs */}
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-destructive/25 blur-[80px] rounded-full pointer-events-none" />
-            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-destructive/15 blur-[80px] rounded-full pointer-events-none" />
-
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
@@ -112,10 +108,7 @@ export function WaitlistModal() {
               <div className="relative z-10 flex flex-col space-y-6">
                 {/* Header Badge & Titles */}
                 <div className="flex flex-col space-y-2">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-destructive/10 border border-destructive/20 text-destructive text-xs font-bold uppercase tracking-wider w-fit">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    {isFounders ? "Exclusive Membership" : "Priority Platform Access"}
-                  </div>
+
                   <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white mt-1">
                     {isFounders ? "Join Founders Club" : "Join Big Film Fund Waitlist"}
                   </h3>
@@ -130,8 +123,8 @@ export function WaitlistModal() {
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4 pt-1">
                   {/* Full Name */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
-                      <User size={13} className="text-destructive" />
+                    <label className="text-[21px] font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
+                      <User size={16} className="text-destructive" />
                       Full Name
                     </label>
                     <input
@@ -146,8 +139,8 @@ export function WaitlistModal() {
 
                   {/* Email */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
-                      <Mail size={13} className="text-destructive" />
+                    <label className="text-[21px] font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
+                      <Mail size={16} className="text-destructive" />
                       Work or Personal Email
                     </label>
                     <input
@@ -162,8 +155,8 @@ export function WaitlistModal() {
 
                   {/* Investor Type */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
-                      <Briefcase size={13} className="text-destructive" />
+                    <label className="text-[21px] font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
+                      <Briefcase size={16} className="text-destructive" />
                       Investor Profile
                     </label>
                     <select
@@ -180,8 +173,8 @@ export function WaitlistModal() {
 
                   {/* Estimated Capital Allocation */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
-                      <DollarSign size={13} className="text-destructive" />
+                    <label className="text-[21px] font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
+                      <DollarSign size={16} className="text-destructive" />
                       Intended Investment Target
                     </label>
                     <select
@@ -214,7 +207,7 @@ export function WaitlistModal() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="mt-4 w-full h-12 rounded-xl bg-destructive hover:bg-destructive/90 text-white font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg shadow-destructive/25 cursor-pointer disabled:opacity-50"
+                    className="mt-4 w-full h-12 rounded-xl bg-destructive hover:bg-destructive/90 text-white font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg cursor-pointer disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <span className="animate-pulse">Processing Application...</span>
@@ -235,7 +228,7 @@ export function WaitlistModal() {
             ) : (
               /* Success Confirmation State */
               <div className="relative z-10 flex flex-col items-center justify-center text-center py-6 space-y-5">
-                <div className="w-16 h-16 rounded-full bg-destructive/15 border border-destructive/30 flex items-center justify-center text-destructive">
+                <div className="w-16 h-16 rounded-full bg-zinc-900 border border-destructive/50 flex items-center justify-center text-destructive">
                   <CheckCircle2 size={36} />
                 </div>
                 <div className="space-y-2">

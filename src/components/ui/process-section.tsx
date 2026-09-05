@@ -2,9 +2,8 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { ArrowUpRight } from 'lucide-react';
 import { SparklesCore } from "@/components/ui/sparkles";
+import { motion } from "framer-motion";
 
 // Interface for individual process card props
 export interface ProcessCardProps {
@@ -12,11 +11,22 @@ export interface ProcessCardProps {
   title: string;
   description: string;
   className?: string;
+  index?: number;
 }
 
 // Reusable Process Card Component
-const ProcessCard: React.FC<ProcessCardProps> = ({ icon: Icon, title, description, className }) => (
-  <div className={cn("group relative w-full overflow-hidden rounded-lg border bg-card dark:bg-black p-6 transition-all cursor-pointer duration-300 hover:border-[#CD0007] hover:shadow-[0_0_20px_rgba(205,0,7,0.15)] ", className)}>
+const ProcessCard: React.FC<ProcessCardProps> = ({ icon: Icon, title, description, className, index = 0 }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-30px" }}
+    transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+    whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+    className={cn(
+      "group relative w-full overflow-hidden rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-card dark:bg-black p-6 transition-all cursor-pointer duration-500 hover:border-[#C00000] hover:shadow-[0_15px_35px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_15px_35px_rgba(0,0,0,0.4)] backdrop-blur-sm",
+      className
+    )}
+  >
     {/* Sparkling Background for Dark Mode */}
     <div className="absolute inset-0 z-0 hidden dark:block opacity-40 transition-opacity duration-500 group-hover:opacity-100">
       <SparklesCore
@@ -29,22 +39,39 @@ const ProcessCard: React.FC<ProcessCardProps> = ({ icon: Icon, title, descriptio
       />
     </div>
 
-    {/* Decorative Line - Visible on larger screens */}
-    <div className="absolute z-10 -left-[1px] top-1/2 hidden h-1/2 w-px -translate-y-1/2 bg-border transition-colors group-hover:bg-[#CD0007] md:block" />
-    <div className="absolute z-10 left-1/2 top-0 h-px w-1/2 -translate-x-1/2 bg-border transition-colors group-hover:bg-[#CD0007] md:hidden" />
+    {/* Continuous Automatic Glass Shine Beam */}
+    <motion.div
+      className="absolute inset-0 z-10 pointer-events-none opacity-30 group-hover:opacity-100 transition-opacity duration-700"
+      style={{
+        background:
+          "linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.35) 45%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.35) 55%, transparent 80%)",
+      }}
+      animate={{
+        x: ["-150%", "200%"],
+      }}
+      transition={{
+        duration: 4,
+        repeat: Infinity,
+        repeatDelay: 2,
+        ease: [0.25, 1, 0.5, 1],
+        delay: index * 0.3,
+      }}
+    />
 
+    {/* Interactive Hover Light Sheen */}
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 dark:via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none z-10" />
 
-    {/* Icon Container - Website Red Icon */}
-    <div className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-destructive/30 bg-destructive/10 dark:bg-destructive/20 text-destructive transition-all duration-300 group-hover:bg-destructive group-hover:border-destructive shadow-md group-hover:shadow-[0_0_20px_rgba(205,0,7,0.4)]">
+    {/* Icon Container */}
+    <div className="relative z-20 mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-destructive transition-all duration-300 group-hover:bg-destructive group-hover:border-destructive shadow-md group-hover:shadow-lg">
       <Icon className="h-7 w-7 text-destructive group-hover:text-white transition-colors duration-300" />
     </div>
 
     {/* Content */}
-    <div className="relative z-10 flex flex-col">
+    <div className="relative z-20 flex flex-col">
       <h3 className="mb-1 text-lg font-bold text-foreground group-hover:text-destructive transition-colors duration-300">{title}</h3>
       <p className="text-sm text-muted-foreground">{description}</p>
     </div>
-  </div>
+  </motion.div>
 );
 
 // Interface for the main section props
@@ -106,10 +133,11 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
         {/* 6 Process Cards Grid (Matching BUILT TO EXECUTE layout) */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center items-stretch pt-4 pb-2">
           {items.map((item, index) => (
-            <ProcessCard key={index} {...item} />
+            <ProcessCard key={index} index={index} {...item} />
           ))}
         </div>
       </div>
     </section>
   );
 };
+

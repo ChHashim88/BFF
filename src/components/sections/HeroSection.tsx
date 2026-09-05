@@ -2,17 +2,25 @@
 
 import { useState } from "react";
 import { Check, ArrowRight, ChevronDown } from "lucide-react";
-import { LiquidButton } from "@/components/ui/liquid-glass-button";
-import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
 import { openWaitlistModal } from "@/components/ui/WaitlistModal";
 
 export function HeroSection() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="relative w-full pt-32 pb-16 lg:pt-36 lg:pb-24 px-6 md:px-12 xl:px-24 flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative w-full pt-32 pb-20 lg:pt-40 lg:pb-24 px-6 md:px-12 xl:px-24 flex items-center justify-center overflow-hidden bg-white">
+      {/* Background Image with Bottom Fade */}
+      <img
+        src="/herooo.png"
+        alt="Hero Background"
+        className="absolute right-0 top-1/2 -translate-y-1/2 h-[82%] max-h-[640px] w-auto object-contain pointer-events-none z-0 [mask-image:linear-gradient(to_bottom,black_65%,transparent_100%)]"
+      />
+
+      {/* Subtle Bottom Gradient Fade */}
+      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none z-[1]" />
+
       <div className="relative z-10 mx-auto grid w-full max-w-[1350px] items-center gap-12 lg:grid-cols-2">
-        <div className="z-10 flex flex-col items-center justify-center space-y-6 text-center max-w-2xl mx-auto lg:mx-0 lg:items-start lg:text-left opacity-100 order-1">
+        <div className="z-10 flex flex-col items-center justify-center space-y-6 text-center max-w-2xl mx-auto lg:mx-0 lg:items-start lg:text-left opacity-100">
           <h1 className="text-h1 text-foreground">
             Film Investing.
             <br />
@@ -73,8 +81,8 @@ export function HeroSection() {
           </div>
 
           {/* Callout box / Feature point */}
-          <div className="hidden lg:flex items-start gap-3.5 border border-border/80 bg-muted/40 p-4 backdrop-blur-sm">
-            <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border border-destructive/40 bg-destructive/10 text-destructive">
+          <div className="hidden lg:flex items-start gap-3.5 border border-border/80 bg-white/80 backdrop-blur-md p-4 shadow-sm">
+            <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-destructive">
               <Check size={12} strokeWidth={3.5} />
             </div>
             <div>
@@ -90,22 +98,25 @@ export function HeroSection() {
 
           {/* Actions */}
           <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 pt-1 w-full">
-            <LiquidButton onClick={() => openWaitlistModal("waitlist")}>
-              Join Waitlist <ArrowRight size={18} />
-            </LiquidButton>
+            <button
+              onClick={() => openWaitlistModal("waitlist")}
+              className="relative group overflow-hidden cursor-pointer rounded-full bg-[#C00000] px-8 py-4 text-base font-bold text-white shadow-xl border border-red-400/30 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-[#990000] hover:shadow-2xl active:scale-95 flex items-center justify-center gap-2.5"
+            >
+              <span className="relative z-10 tracking-wide uppercase text-sm font-black">
+                Join Waitlist
+              </span>
+              <ArrowRight
+                size={18}
+                className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+              />
+              {/* Glass Shimmer Reflection */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+            </button>
           </div>
-        </div>
-
-        {/* Globe Container */}
-        <div className="z-0 pointer-events-auto relative flex items-center justify-center mt-6 lg:mt-0 opacity-100 order-2 w-full max-w-[580px] mx-auto">
-          <div className="relative w-full aspect-square">
-            <GlobePulse className="h-full w-full" />
-          </div>
-
-          {/* Shadow below the globe */}
-          <div className="absolute -bottom-5 left-1/2 h-16 w-3/4 -translate-x-1/2 rounded-[100%] bg-black/15 blur-2xl pointer-events-none" />
         </div>
       </div>
     </section>
   );
 }
+
+

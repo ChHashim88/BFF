@@ -24,7 +24,7 @@ function ProblemPointItem({ number, shortText, fullText }: ProblemPointProps) {
           onClick={() => setIsExpanded(!isExpanded)}
           title={isExpanded ? "Show Less" : "Show More"}
           aria-label={isExpanded ? "Show Less" : "Show More"}
-          className="inline-flex items-center justify-center h-6 w-6 rounded-full text-destructive hover:bg-destructive/15 transition-all cursor-pointer ml-1 align-middle border border-destructive/30"
+          className="inline-flex items-center justify-center h-6 w-6 rounded-full text-destructive hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer ml-1 align-middle border border-border"
         >
           <ChevronDown
             size={14}
@@ -46,7 +46,7 @@ export function ProblemSection() {
       <div className="mx-auto w-full max-w-[1350px] flex flex-col space-y-10 lg:space-y-16">
         <div className="w-full text-center lg:text-left">
           <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
-            THE PROBLEM
+            THE Solution
           </h3>
           <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
             Film investing has never been <span className="text-destructive"><br />built for investors.</span>

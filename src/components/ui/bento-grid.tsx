@@ -7,9 +7,9 @@ export default function FUIBentoGridDark() {
     <section className="w-full bg-background pt-16 md:pt-20 lg:pt-24 pb-8">
       <div className="w-full px-6 md:px-12 xl:px-24 mx-auto max-w-[1350px]">
         <div className="flex flex-col items-center justify-center text-center">
-          <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
+          {/* <h3 className="text-h3 text-destructive uppercase tracking-tight font-bold mb-3">
             RADICAL TRANSPARENCY
-          </h3>
+          </h3> */}
           <h2 className="text-h2 text-foreground dark:text-white drop-shadow-sm">
             Radical <span className="text-destructive">Transparency.</span>
           </h2>

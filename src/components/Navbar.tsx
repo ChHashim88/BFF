@@ -5,7 +5,6 @@ import { ThemeToggle } from "./ThemeToggle";
 import { openWaitlistModal } from "@/components/ui/WaitlistModal";
 
 const navLinks = [
-  { label: "Home", href: "/" },
   { label: "Solution", href: "#problem" },
   {
     label: "BFF Model",
@@ -21,8 +20,6 @@ const navLinks = [
   { label: "How We Make Money", href: "#revenue" },
   { label: "Built to Execute", href: "#execute" },
   { label: "Founders Club", href: "#founders-club" },
-  { label: "Progress to Date", href: "#progress-to-date" },
-  { label: "What Comes Next", href: "#next" },
   { label: "Investment", href: "#investment" },
 ];
 
@@ -90,9 +87,9 @@ export function Navbar() {
         {/* CTA */}
         <div className="shrink-0 flex items-center gap-2">
           <ThemeToggle />
-          <button 
+          <button
             onClick={() => openWaitlistModal("waitlist")}
-            className="cursor-pointer rounded-full bg-destructive px-3 py-1.5 lg:px-4 lg:py-1.5 text-[9px] lg:text-xs font-semibold text-destructive-foreground shadow-sm transition-all duration-200 hover:scale-105 hover:bg-destructive/95 hover:shadow-md hover:shadow-destructive/25 active:scale-95 whitespace-nowrap"
+            className="cursor-pointer rounded-full bg-destructive px-3 py-1.5 lg:px-4 lg:py-1.5 text-[9px] lg:text-xs font-semibold text-destructive-foreground shadow-sm transition-all duration-200 hover:scale-105 hover:bg-destructive/95 hover:shadow-md active:scale-95 whitespace-nowrap"
           >
             Join Waitlist
           </button>

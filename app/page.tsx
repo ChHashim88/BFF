@@ -18,6 +18,7 @@ import { FoundersClubSection } from "@/components/sections/FoundersClubSection";
 import { ProgressSection } from "@/components/sections/ProgressSection";
 import { ProcessSection } from "@/components/ui/process-section";
 import Investment from "@/components/ui/Investment";
+import { ContactSection } from "@/components/sections/ContactSection";
 import Footer from "@/components/ui/footer";
 import { WaitlistModal } from "@/components/ui/WaitlistModal";
 import { StickyFooterCTA } from "@/components/ui/StickyFooterCTA";
@@ -85,6 +86,7 @@ export default function HomePage() {
           items={processItems}
         />
         <Investment />
+        <ContactSection />
         <Footer />
       </main>
       <WaitlistModal />

@@ -4,12 +4,12 @@
 ========================================================= */
 
 :root {
-  --bff-red: #cd0007;
+  --bff-red: #C00000;
   --bff-dark: #111827;
   --bff-text: #252525;
   --bff-muted: #626262;
   --bff-border: #e8e8e8;
-  --bff-bg: #f7f7f7;
+  --bff-bg: #ffffff;
   --bff-white: #ffffff;
 }
 
@@ -262,7 +262,7 @@
 .eyebrow {
   color: var(--bff-red);
 
-  font-size: 15px;
+  font-size: 21px;
   font-weight: 750;
 
   letter-spacing: -0.2px;
@@ -1268,7 +1268,7 @@
 
 
   .eyebrow {
-    font-size: 13px;
+    font-size: 21px;
 
     margin-bottom: 13px;
   }

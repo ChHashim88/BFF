@@ -174,75 +174,75 @@ export default function RadialOrbitalTimeline({
   const isSolid = colorTheme === "solidRed";
 
   const c = {
-    bg: colorTheme === "monochrome" ? "bg-foreground" : "bg-[#CD0007]",
+    bg: colorTheme === "monochrome" ? "bg-foreground" : "bg-[#C00000]",
     bg10:
       colorTheme === "monochrome"
         ? "bg-foreground/10"
         : isSolid
-          ? "bg-[#CD0007]/20"
-          : "bg-[#CD0007]/10",
+          ? "bg-[#C00000]/20"
+          : "bg-[#C00000]/10",
     bg20:
       colorTheme === "monochrome"
         ? "bg-foreground/20"
         : isSolid
-          ? "bg-[#CD0007]/30"
-          : "bg-[#CD0007]/20",
+          ? "bg-[#C00000]/30"
+          : "bg-[#C00000]/20",
     bg50:
       colorTheme === "monochrome"
         ? "bg-foreground/50"
         : isSolid
-          ? "bg-[#CD0007]/80"
-          : "bg-[#CD0007]/50",
-    hoverBg5: colorTheme === "monochrome" ? "hover:bg-foreground/5" : "hover:bg-[#CD0007]/10",
-    hoverBg10: colorTheme === "monochrome" ? "hover:bg-foreground/10" : "hover:bg-[#CD0007]/20",
-    text: colorTheme === "monochrome" ? "text-foreground" : "text-[#CD0007]",
+          ? "bg-[#C00000]/80"
+          : "bg-[#C00000]/50",
+    hoverBg5: colorTheme === "monochrome" ? "hover:bg-foreground/5" : "hover:bg-[#C00000]/10",
+    hoverBg10: colorTheme === "monochrome" ? "hover:bg-foreground/10" : "hover:bg-[#C00000]/20",
+    text: colorTheme === "monochrome" ? "text-foreground" : "text-[#C00000]",
     textInv: colorTheme === "monochrome" ? "text-background" : "text-white",
-    hoverText: colorTheme === "monochrome" ? "hover:text-foreground" : "hover:text-[#CD0007]",
-    border: colorTheme === "monochrome" ? "border-foreground" : "border-[#CD0007]",
+    hoverText: colorTheme === "monochrome" ? "hover:text-foreground" : "hover:text-[#C00000]",
+    border: colorTheme === "monochrome" ? "border-foreground" : "border-[#C00000]",
     border20:
       colorTheme === "monochrome"
         ? "border-foreground/20"
         : isSolid
-          ? "border-[#CD0007]/40"
-          : "border-[#CD0007]/20",
+          ? "border-[#C00000]/40"
+          : "border-[#C00000]/20",
     border30:
       colorTheme === "monochrome"
         ? "border-foreground/30"
         : isSolid
-          ? "border-[#CD0007]/60"
-          : "border-[#CD0007]/30",
+          ? "border-[#C00000]/60"
+          : "border-[#C00000]/30",
     border50:
       colorTheme === "monochrome"
         ? "border-foreground/50"
         : isSolid
-          ? "border-[#CD0007]/80"
-          : "border-[#CD0007]/50",
+          ? "border-[#C00000]/80"
+          : "border-[#C00000]/50",
     border60:
       colorTheme === "monochrome"
         ? "border-foreground/60"
         : isSolid
-          ? "border-[#CD0007]"
-          : "border-[#CD0007]/60",
+          ? "border-[#C00000]"
+          : "border-[#C00000]/60",
     hoverBorder60:
-      colorTheme === "monochrome" ? "hover:border-foreground/60" : "hover:border-[#CD0007]",
+      colorTheme === "monochrome" ? "hover:border-foreground/60" : "hover:border-[#C00000]",
     shadow:
       colorTheme === "monochrome"
         ? "shadow-[0_0_30px_rgba(0,0,0,0.5)] dark:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
         : isSolid
-          ? "shadow-[0_0_30px_rgba(205,0,7,0.7)]"
-          : "shadow-[0_0_30px_rgba(205,0,7,0.5)]",
+          ? "shadow-[0_0_30px_rgba(0,0,0,0.25)]"
+          : "shadow-[0_0_20px_rgba(0,0,0,0.15)]",
     shadow20:
       colorTheme === "monochrome"
         ? "shadow-foreground/20"
         : isSolid
-          ? "shadow-[#CD0007]/40"
-          : "shadow-[#CD0007]/20",
+          ? "shadow-black/25"
+          : "shadow-black/15",
     shadow40:
       colorTheme === "monochrome"
         ? "shadow-foreground/40"
         : isSolid
-          ? "shadow-[#CD0007]/60"
-          : "shadow-[#CD0007]/40",
+          ? "shadow-black/35"
+          : "shadow-black/20",
   };
 
   return (
